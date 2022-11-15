@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>Movie</div>
 </template>
 
 <script>

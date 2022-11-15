@@ -14,11 +14,6 @@ const routes = [
     component: MainView
   },
   {
-    path: '/main',
-    name: 'main',
-    component: MainView
-  },
-  {
     path: '/compatibility',
     name: 'compatibility',
     component: CompatibilityView
