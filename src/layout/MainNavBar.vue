@@ -3,13 +3,28 @@
         <div id="logo">MOVIZ</div>
         <ul>
             <li>
-                <a href="#main-page">main</a>
+                <a href="#main-page">
+                    <button class="a-button">
+                        Main<span aria-hidden="aria-hidden">_</span>
+                        <span aria-hidden="aria-hidden" class="a-button__glitch">Main_</span>
+                    </button>
+                </a>
             </li>
             <li>
-                <a href="#main-characters">characters</a>
+                <a href="#main-characters">
+                    <button class="a-button">
+                        Character<span aria-hidden="aria-hidden">_</span>
+                        <span aria-hidden="aria-hidden" class="a-button__glitch">Character_</span>
+                    </button>
+                </a>
             </li>
             <li>
-                <a href="#main-movies">movies</a>
+                <a href="#main-movies">
+                    <button class="a-button">
+                        Movies<span aria-hidden="aria-hidden">_</span>
+                        <span aria-hidden="aria-hidden" class="a-button__glitch">Movies_</span>
+                    </button>
+                </a>
             </li>
         </ul>
         <div>Team.</div>
@@ -21,31 +36,5 @@
 </script>
 
 <style>
-    #main-nav-bar{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        width: 80%;
-    }
-
-    #main-nav-bar ul {
-        padding: 0;
-        margin:0;
-        display: flex;
-        justify-content: center;
-        gap : 3vw;
-        list-style-type: none;
-    }
-
-    #main-nav-bar ul li a{
-        font-family: 'LeferiPoint-WhiteObliqueA';
-        font-size : 1.5em;
-        text-decoration: none;
-    }
-
-    #logo {
-        font-family: 'SBAggroB';
-        font-size : 1.5em;
-    }
+@import '../css/MainNavBar.css'
 </style>

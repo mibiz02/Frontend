@@ -14,9 +14,10 @@ export default {
 </script>
 
 <style>
-@import './Font.css';
+@import './css/Font.css';
 
 #app{
   padding: 3vh 10vw;
+  background-color : #000;
 }
 </style>
