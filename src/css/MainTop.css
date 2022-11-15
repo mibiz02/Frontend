@@ -1,0 +1,47 @@
+:root {
+    --color-1: #186cb8;
+    --color-2: #2a9a9f;
+    --color-3: #f1b211;
+    --color-4: #e83611;
+    --color-5: #f9002f;
+}
+
+#main-page {
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    text-align: left;
+}
+
+.main-font {
+    margin: 5em 0 0;
+}
+
+.main-font * {
+    line-height: 0;
+}
+
+.main-font h1 {
+    font-size: 8vw;
+    font-family: 'SBAggroB';
+    margin-bottom: 0.3em;
+}
+
+.main-line {
+    height: 6vw;
+    display: flex;
+    align-items: center;
+}
+
+.main-line * {
+    display: inline;
+}
+
+.main-line h1 {
+    margin-bottom: 0.3em;
+}
+
+.main-line img {
+    margin-bottom: -1.7em;
+    height: 100%;
+}
