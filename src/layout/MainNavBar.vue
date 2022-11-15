@@ -36,5 +36,5 @@
 </script>
 
 <style>
-@import '../css/MainNavBar.css'
+@import '../css/MainNavBar.css';
 </style>
