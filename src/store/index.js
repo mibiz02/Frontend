@@ -1,28 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {intj, intp, entj, entp, infj, infp, enfj, enfp, istj, isfj, estj, esfj, istp, isfp, estp, esfp} from './mbtis'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    type_mbti : {
-      0:{
+    type_mbti : [
+      {
         name : "분석가형",
-        mbti : ["INTJ", "INTP", "ENTJ", "ENTP"]
+        mbti : [intj, intp, entj, entp]
       },
-      1:{
+      {
         name : "외교관형",
-        mbti : ["INFJ", "INFP", "ENFJ", "ENFP"]
+        mbti : [infj, infp, enfj, enfp]
       },
-      2:{
+      {
         name : "관리자형",
-        mbti : ["ISTJ", "ISFJ", "ESTJ", "ESFP"]
+        mbti : [istj, isfj, estj, esfj]
       },
-      3:{
+      {
         name : "탐험가형",
-        mbti : ["ISTP", "ISFP", "ESTP", "ESFP"]
+        mbti : [istp, isfp, estp, esfp]
       },
-    }
+    ]
   },
   getters: {
   },
