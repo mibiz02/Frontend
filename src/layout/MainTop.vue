@@ -1,5 +1,5 @@
 <template>
-    <div id="main-page">
+    <div id="main-page" class="container">
         <div class="main-font">
             <div class="main-line">
                 <h1>MOVIE</h1>

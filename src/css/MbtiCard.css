@@ -1,0 +1,84 @@
+.mbti_card {
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mbti_card:hover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img_box {
+    display: flex;
+    justify-content: center;
+}
+
+.img_box,
+.img_box img {
+    width: 100%;
+    position: relative;
+}
+
+.mbti_card:hover .img_box{
+    width: 120%;
+}
+
+.img_box img {
+    background-color: transparent;
+    z-index: 5;
+}
+
+.img_box div {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    position: absolute;
+    top : 3em;
+    background-image: rgb(34,193,195);
+    background-image: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    opacity: 0.4;
+}
+
+.mbti_card:hover .img_box div {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    position: absolute;
+    top : 5em;
+}
+
+.mbti_info {
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.mbti_info * {
+    margin : 0;
+}
+
+.mbti_info h3 {
+    font-family: 'SBAggroB';
+    font-size : 1.5em;
+}
+
+.mbti_card:hover .mbti_info {
+    transform: translateY(-3em);
+}
+
+.mbti_card:hover .mbti_info h3{
+    font-size : 3em;
+    line-height: 0;
+}
+
+.mbti_card:hover .mbti_info p {
+    margin-top: 1em;
+    text-align: right;
+}
+
+.mbti_card:hover .img_box , .mbti_card:hover .mbti_info p, .mbti_card:hover .mbti_info h3 {
+    transition: 0.5s;
+}
