@@ -64,4 +64,18 @@
     padding : 0.5em 1em;
     border-radius: 0.5em;
     cursor: pointer;
+    width:5em;
+    margin : 0 auto;
+}
+
+#__login_box *{
+    display: block;
+}
+
+#__login_box {
+    display: flex;
+    flex-direction: column;
+    gap : 2em;
+    margin-block:2em;
+    font-family: 'LeferiPoint-WhiteObliqueA';
 }
