@@ -1,6 +1,8 @@
 <template>
     <nav id="main-nav-bar">
-        <div id="logo">MOVIZ</div>
+        <router-link to="/">
+            <div id="logo">MOVIZ</div>
+        </router-link>
         <ul>
             <li>
                 <a href="#main-page">
@@ -27,7 +29,11 @@
                 </a>
             </li>
         </ul>
-        <div>Team.</div>
+        <div class="__go_sign">
+            <router-link to="/login" >Login</router-link>
+            <router-link to="/register" >Register</router-link>
+        </div>
+
     </nav>
 </template>
 
@@ -36,5 +42,5 @@
 </script>
 
 <style>
-@import '../css/MainNavBar.css';
+    @import '../css/MainNavBar.css';
 </style>

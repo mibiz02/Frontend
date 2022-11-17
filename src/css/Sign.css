@@ -1,0 +1,49 @@
+.sign {
+    height : fit-content;
+}
+
+.sign .container {
+    text-align: center;
+}
+
+.sign .container .__title {
+    text-align: center;
+    margin-bottom: 4em;
+}
+
+.sign .container .__title h1 {
+    text-transform : uppercase;
+    font-size: 350%;
+    margin-bottom: 0;
+}
+
+.sign .container .__title *, .__sign_btn {
+    font-family: 'SBAggroB';
+}
+
+.container .__input_box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4em;
+}
+
+.container .__input_box * {
+    margin : 0.3em;
+    padding : 1em;
+    font-size: 1.5em;
+    border-radius: 1em;
+    background-color: transparent;
+    color : white;
+    font-family: 'LeferiPoint-WhiteObliqueA';
+}
+
+.__sign_btn {
+    color: white;
+    background-color: transparent;
+    background: rgb(232,139,52);
+    background: linear-gradient(0deg, rgba(232,139,52,1) 0%, rgba(253,45,84,1) 100%);
+    font-size: 1.5em;
+    padding : 0.5em 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}

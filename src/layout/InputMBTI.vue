@@ -1,13 +1,13 @@
 <template>
     <div id="select_mbti" class="container">
         <div class="select_title">
-            <div class="go_link">
-                <a>MBTI 검사하러 가기</a>
-                <p>❗검사는 총 50문항으로 20분 가량 소요됩니다</p>
-            </div>
             <div class="title">
-                <h1>보고싶은
-                    <p :style="getStyle">MBTI</p>를 선택하세요</h1>
+                <h1>당신의
+                    <p :style="getStyle">MBTI</p>는 무엇인가요?</h1>
+            </div>
+            <div class="go_link">
+                <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">MBTI 검사하러 가기</a>
+                <p>총 50문항으로 20분 가량 소요됩니다</p>
             </div>
         </div>
         <div id="__zone">

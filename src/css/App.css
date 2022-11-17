@@ -1,5 +1,6 @@
+
 .container {
-    margin : 10vh 0 30vh 0;
+    padding : 10vh 0 30vh 0;
 }
 
 #app{
@@ -7,4 +8,8 @@
     display: flex;
     justify-content: center;
     background-color : #000;
-  }
+}
+
+body {
+    margin : 0;
+}

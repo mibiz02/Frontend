@@ -4,6 +4,9 @@ import CompatibilityView from '../views/CompatibilityView'
 import ErrorView from '../views/ErrorView'
 import MainView from '../views/MainView'
 import MovieView from '../views/MovieView'
+import LoginView from '../views/LoginView'
+import RegisterView from '../views/RegisterView'
+import MyPageView from '../views/MyPageView'
 
 Vue.use(VueRouter)
 
@@ -22,6 +25,21 @@ const routes = [
     path: '/movie',
     name: 'movie',
     component: MovieView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView
+  },
+  {
+    path: '/mypage',
+    name: 'mypage',
+    component: MyPageView
   },
   {
     path: '*',
