@@ -22,6 +22,7 @@
                     :text="item.text"
                     :imgUrl="item.imgUrl"
                     :idx="page"/>
+                <div id="mbti_name">{{mbti_lst[page].name}}</div>
             </div>
             <div @click="addPage" class="select_arrow">
                 <img :src="next" alt="next"/>

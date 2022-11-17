@@ -32,7 +32,7 @@
 .select_title{
     display: grid;
     grid-template-columns: 3fr 1fr;
-    margin : 1em 3em 3em 3em;
+    margin : 1em 3em 1em 3em;
     align-items: center;
 }
 
@@ -73,4 +73,13 @@
 
 .go_link p {
     font-size: 0.8em;
+}
+
+#mbti_name {
+    font-family: 'SBAggroB';
+    position: absolute;
+    z-index: 0;
+    color: white;
+    font-size: 500%;
+    opacity: 0.4;
 }
