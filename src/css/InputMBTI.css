@@ -1,0 +1,85 @@
+#select_mbti {
+    width: 100%;
+    height: 55vh;
+}
+
+#select_mbti #__zone {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    align-items: stretch;
+}
+
+#select_zone {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.select_arrow {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    bottom : -10em;
+}
+
+.select_arrow img {
+    width: 50%;
+    cursor: pointer;
+}
+
+.select_title{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin : 1em 3em 1em 3em;
+    align-items: center;
+}
+
+.select_title .go_link {
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    border-left : solid 1px white;
+    text-align: center;
+    padding-left: 10%;
+}
+
+.select_title .title {
+    font-family: 'SBAggroB';
+    padding-right: 10%;
+}
+
+.select_title .title * {
+    display: inline;
+    padding: 0;
+}
+
+.select_title .title p {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.go_link a {
+    text-align: center;
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.7em 1em 0.4em 1em;
+    background: rgb(232,139,52);
+    background: linear-gradient(0deg, rgba(232,139,52,1) 0%, rgba(253,45,84,1) 100%);
+    border-radius: 0.6em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.go_link p {
+    font-size: 0.8em;
+}
+
+#mbti_name {
+    font-family: 'SBAggroB';
+    position: absolute;
+    z-index: 0;
+    color: white;
+    font-size: 500%;
+    opacity: 0.4;
+}

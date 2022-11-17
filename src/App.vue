@@ -15,15 +15,6 @@ export default {
 
 <style>
 @import './css/Font.css';
+@import './css/App.css';
 
-body {
-  
-}
-
-#app{
-  padding: 3vh 10%;
-  display: flex;
-  justify-content: center;
-  background-color : #000;
-}
 </style>

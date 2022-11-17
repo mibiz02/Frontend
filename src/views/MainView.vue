@@ -4,68 +4,8 @@
         <div class="view-body">
             <MainTop />
             <div id="main-characters">
-                MBTI Character
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/></div>
+                <InputMBTI />
+            </div>
             <div id="main-movies">
                 Suggest Movie
                 <br/>
@@ -136,10 +76,12 @@
 <script>
     import MainNavBar from '../layout/MainNavBar.vue'
     import MainTop from '../layout/MainTop.vue'
+    import InputMBTI from '../layout/InputMBTI.vue'
 
     export default {name: 'MainView', components: {
             MainNavBar,
-            MainTop
+            MainTop,
+            InputMBTI
         }}
 </script>
 
