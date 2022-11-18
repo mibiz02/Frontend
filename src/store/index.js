@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 import {
     intj,
     intp,
@@ -23,6 +24,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        mbti: '',
         type_mbti: [
             {
                 name: "분석가형",
@@ -38,38 +40,42 @@ export default new Vuex.Store({
                 mbti: [istp, isfp, estp, esfp]
             }
         ],
-        mbti_style : `background-image: rgb(166,34,195);
+        mbti_style: `background-image: rgb(166,34,195);
         background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`
     },
-    getters: {
-    },
+    getters: {},
     mutations: {
-      setStyle(state, payload) {
-        let style = ''
+        setStyle(state, payload) {
+            let style = ''
 
-        switch (payload) {
-            case 0:
-                style = `background-image: rgb(166,34,195);
+            switch (payload) {
+                case 0:
+                    style = `background-image: rgb(166,34,195);
                     background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`
-                break;
-            case 1:
-                style = `background-image: rgb(34,193,195);
+                    break;
+                case 1:
+                    style = `background-image: rgb(34,193,195);
                     background-image: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);`
-                break;
-            case 2:
-                style = `background-image: rgb(34,195,161);
+                    break;
+                case 2:
+                    style = `background-image: rgb(34,195,161);
                     background-image: linear-gradient(0deg, rgba(34,195,161,1) 0%, rgba(45,115,253,1) 100%)`;
-                break;
-            case 3:
-                style = `background-image: rgb(232,119,52);
+                    break;
+                case 3:
+                    style = `background-image: rgb(232,119,52);
                     background-image: linear-gradient(0deg, rgba(232,119,52,1) 0%, rgba(253,191,45,1) 100%);`
-                break;
-        }
+                    break;
+            }
 
-        state.mbti_style = style
-    }
+            state.mbti_style = style
+        },
+        setMbti(state, payload) {
+            state.mbti = payload
+        }
     },
-    actions: {
-    },
-    modules: {}
+    actions: {},
+    modules: {},
+    plugins: [
+        createPersistedState()
+    ]
 })

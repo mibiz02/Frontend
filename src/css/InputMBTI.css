@@ -1,6 +1,6 @@
 #select_mbti {
     width: 100%;
-    height: 50vh;
+    height: 60vh;
     padding-bottom: 20%;
 }
 
@@ -84,4 +84,17 @@
     color: white;
     font-size: 500%;
     opacity: 0.4;
+}
+
+.__to_compability {
+    display: none;
+    width: 100%;
+    margin-block: 3em;
+    text-align: right;
+    font-size: 2em;
+    font-family: 'SBAggroB';
+}
+
+.__to_compability a {
+    text-decoration: none;
 }

@@ -1,10 +1,22 @@
 <template>
-  <div>Compatibility</div>
+  <div>
+    <SignNavBar />
+    <div class="view-body">
+      <CompatibilityTop />
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
+import SignNavBar from '../layout/SignNavBar.vue'
+import CompatibilityTop from '../layout/CompatibilityTop.vue'
 
+export default {
+  name : 'CompatiblityView',
+  components : {
+    SignNavBar,
+    CompatibilityTop
+  }
 }
 </script>
 
