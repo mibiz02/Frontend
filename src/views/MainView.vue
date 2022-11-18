@@ -5,6 +5,7 @@
             <MainTop />
             <div id="main-characters">
                 <InputMBTI />
+                <CharacterList />
             </div>
             <div id="main-movies">
                 <MovieList />
@@ -18,12 +19,14 @@
     import MainTop from '../layout/MainTop.vue'
     import InputMBTI from '../layout/InputMBTI.vue'
     import MovieList from '../layout/MovieList.vue'
+    import CharacterList from '../layout/CharacterList.vue'
 
     export default {name: 'MainView', components: {
             MainNavBar,
             MainTop,
             InputMBTI,
-            MovieList
+            MovieList,
+            CharacterList
         }}
 </script>
 

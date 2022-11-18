@@ -1,6 +1,7 @@
 #select_mbti {
     width: 100%;
-    height: 55vh;
+    height: 50vh;
+    padding-bottom: 20%;
 }
 
 #select_mbti #__zone {

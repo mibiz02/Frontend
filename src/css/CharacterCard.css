@@ -1,0 +1,59 @@
+.characterCard {
+    width: 25%;
+    height: 70vh;
+    margin: 0 1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.characterCard .__movie {
+    width: 100%;
+    position: absolute;
+    top:0;
+    border-radius: 1em 1em 0 0;
+}
+
+.characterCard .__character_profile {
+    width: 40%;
+    height: auto;
+    position: absolute;
+    z-index: 10;
+    bottom: 25%;
+    left:24%;
+    object-fit: cover;
+    border-radius: 10em;
+    border: white solid 1em;
+}
+
+.characterCard .__info {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    position: absolute;
+    z-index: 1;
+    bottom:0;
+    width: 100%;
+    height: 25%;
+    padding-top : 20%;
+    border-radius: 0 1em 0 0;
+}
+
+.characterCard .__info * {
+    color : black;
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    font-size : 1.2em;
+}
+
+.characterCard .__info .__name {
+    font-weight: bold;
+}
+
+.characterCard .__info .__mbti {
+    font-family: 'SBAggroB';
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

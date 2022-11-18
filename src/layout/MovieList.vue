@@ -5,10 +5,9 @@
             <h1>들이 선택한 영화</h1>
         </div>
         <flickity
-            class="flickity"
+            class="flickity_movie_list"
             ref="flickity"
-            :options="flickityOptions"
-            data-flickity='{ "wrapAround": true }'>
+            :options="flickityOptions">
             <MovieCard/>
             <MovieCard/><MovieCard/><MovieCard/><MovieCard/>
         </flickity>
@@ -29,9 +28,9 @@
                 flickityOptions: {
                     initialIndex: 3,
                     prevNextButtons: true,
-                    pageDots: true,
                     wrapAround: true,
-                    freeScroll: true
+                    freeScroll: true,
+                    autoPlay: 2000
                     // any options from Flickity can be used
                 }
             }
