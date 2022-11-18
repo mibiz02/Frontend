@@ -8,7 +8,9 @@
                 <CharacterList />
             </div>
             <div id="main-movies">
-                <MovieList />
+                <MovieList 
+                    :movieList="getMovieList"
+                />
             </div>
         </div>
     </div>
@@ -21,13 +23,22 @@
     import MovieList from '../layout/MovieList.vue'
     import CharacterList from '../layout/CharacterList.vue'
 
-    export default {name: 'MainView', components: {
+    export default {
+        name: 'MainView',
+        components: {
             MainNavBar,
             MainTop,
             InputMBTI,
             MovieList,
             CharacterList
-        }}
+        },
+        computed:{
+            getMovieList() {
+                console.log(this.$store.dispatch('getMovieList'))
+                return this.$store.dispatch('getMovieList')
+            }
+        }
+    }
 </script>
 
 <style>

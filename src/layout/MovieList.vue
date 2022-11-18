@@ -4,6 +4,7 @@
             <h1 :style="getStyle">많은 사람</h1>
             <h1>들이 선택한 영화</h1>
         </div>
+        {{this.movieList}}
         <flickity
             class="flickity_movie_list"
             ref="flickity"
@@ -19,6 +20,10 @@
     import MovieCard from '../components/MovieCard.vue'
 
     export default {
+        name:'MovieList',
+        props : {
+            movieList:Array
+        },
         components: {
             Flickity,
             MovieCard

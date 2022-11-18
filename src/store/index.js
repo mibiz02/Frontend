@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import {
     intj,
@@ -19,6 +20,8 @@ import {
     estp,
     esfp
 } from './mbtis'
+
+const API_URL = 'http://127.0.0.0:8000'
 
 Vue.use(Vuex)
 
@@ -73,9 +76,16 @@ export default new Vuex.Store({
             state.mbti = payload
         }
     },
-    actions: {},
+    actions: {
+        getMovieList() {
+            axios
+                .get(`${API_URL}/movies`)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => console.log(err))
+            }
+    },
     modules: {},
-    plugins: [
-        createPersistedState()
-    ]
+    plugins: [createPersistedState()]
 })
