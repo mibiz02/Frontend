@@ -1,4 +1,3 @@
-
 .movie {
     background: #fff;
 }
@@ -95,7 +94,10 @@
     display: inline;
 }
 
-
 .movie-sub-box *:first-child {
     padding-right :1em;
+}
+
+.genre {
+    margin-right:0.5em;
 }

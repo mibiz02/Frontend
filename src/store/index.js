@@ -21,7 +21,7 @@ import {
     esfp
 } from './mbtis'
 
-const API_URL = 'http://127.0.0.0:8000'
+const API_URL = 'http://127.0.0.1:8000'
 
 Vue.use(Vuex)
 
@@ -41,10 +41,11 @@ export default new Vuex.Store({
             }, {
                 name: "탐험가형",
                 mbti: [istp, isfp, estp, esfp]
-            }
+            },
         ],
         mbti_style: `background-image: rgb(166,34,195);
-        background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`
+        background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`,
+        movie_list:[]
     },
     getters: {},
     mutations: {
@@ -74,14 +75,22 @@ export default new Vuex.Store({
         },
         setMbti(state, payload) {
             state.mbti = payload
+        },
+        SET_MOVIE_LIST(state, payload){
+            state.movie_list = payload
+            console.log(state.movie_list)
         }
     },
     actions: {
-        getMovieList() {
+        GET_MOVIE_LIST({commit}) {
             axios
                 .get(`${API_URL}/movies`)
                 .then(res => {
-                    console.log(res)
+                    res.data.forEach(el => {
+                        el.genre_name = el.genre_name.split(',').slice(0, -1)
+                    });
+
+                    commit('SET_MOVIE_LIST', res.data)
                 })
                 .catch(err => console.log(err))
             }

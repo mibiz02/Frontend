@@ -8,9 +8,7 @@
                 <CharacterList />
             </div>
             <div id="main-movies">
-                <MovieList 
-                    :movieList="getMovieList"
-                />
+                <MovieList />
             </div>
         </div>
     </div>
@@ -32,11 +30,8 @@
             MovieList,
             CharacterList
         },
-        computed:{
-            getMovieList() {
-                console.log(this.$store.dispatch('getMovieList'))
-                return this.$store.dispatch('getMovieList')
-            }
+        created() {
+            this.$store.dispatch('GET_MOVIE_LIST');
         }
     }
 </script>

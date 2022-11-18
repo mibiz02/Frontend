@@ -1,3 +1,7 @@
+#main-movies {
+    height: 100vh;
+}
+
 .flickity-page-dots {
     display: none;
    }
@@ -16,6 +20,10 @@
 
 .flickity-viewport {
     overflow: visible;
+}
+
+.movie_list {
+    height: fit-content;
 }
 
 .movie_list_title {
