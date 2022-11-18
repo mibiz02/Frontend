@@ -27,6 +27,7 @@
             <div @click="addPage" class="select_arrow">
                 <img :src="next" alt="next"/>
             </div>
+            
         </div>
     </div>
 </template>

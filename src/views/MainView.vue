@@ -5,70 +5,11 @@
             <MainTop />
             <div id="main-characters">
                 <InputMBTI />
+                <CharacterList />
             </div>
             <div id="main-movies">
-                Suggest Movie
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/></div>
+                <MovieList />
+            </div>
         </div>
     </div>
 </template>
@@ -77,11 +18,15 @@
     import MainNavBar from '../layout/MainNavBar.vue'
     import MainTop from '../layout/MainTop.vue'
     import InputMBTI from '../layout/InputMBTI.vue'
+    import MovieList from '../layout/MovieList.vue'
+    import CharacterList from '../layout/CharacterList.vue'
 
     export default {name: 'MainView', components: {
             MainNavBar,
             MainTop,
-            InputMBTI
+            InputMBTI,
+            MovieList,
+            CharacterList
         }}
 </script>
 

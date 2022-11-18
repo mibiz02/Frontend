@@ -1,0 +1,33 @@
+.flickity-page-dots {
+    display: none;
+   }
+
+.flickity-prev-next-button .arrow {
+    fill: rgb(79, 79, 79);
+}
+
+.flickity_movie_list {
+    height: 30vh;
+}
+
+.flickity-slider {
+    height: 100%;
+}
+
+.flickity-viewport {
+    overflow: visible;
+}
+
+.movie_list_title {
+    margin : 1em 3em;
+    font-family: 'SBAggroB';
+}
+
+.movie_list_title * {
+    display: inline;
+}
+
+.movie_list_title *:first-child {
+     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

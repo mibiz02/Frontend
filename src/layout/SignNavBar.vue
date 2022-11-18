@@ -1,5 +1,5 @@
 <template>
-    <nav id="main-nav-bar">
+    <nav id="sub-nav-bar">
         <router-link to="/">
             <div id="logo">MOVIZ</div>
         </router-link>
@@ -7,13 +7,13 @@
             <li>
                 <router-link to="/">
                     <button class="a-button">
-                        Main<span aria-hidden="aria-hidden">_</span>
+                        go_Main<span aria-hidden="aria-hidden">_</span>
                         <span aria-hidden="aria-hidden" class="a-button__glitch">Main_</span>
                     </button>
                 </router-link>
             </li>
         </ul>
-        <div>Team.</div>
+        <div>Team.MOVIZ</div>
     </nav>
 </template>
 
