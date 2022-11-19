@@ -32,6 +32,7 @@
         },
         created() {
             this.$store.dispatch('GET_MOVIE_LIST');
+            this.$store.dispatch('GET_MBTI_LIST');
         }
     }
 </script>

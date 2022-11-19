@@ -16,9 +16,6 @@
 
     export default {
         name: 'MovieList',
-        props: {
-            movieList: Array
-        },
         components: {
             Flickity,
             MovieCard

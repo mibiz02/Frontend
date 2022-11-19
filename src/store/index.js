@@ -28,6 +28,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         mbti: '',
+        idx : 1,
         type_mbti: [
             {
                 name: "분석가형",
@@ -41,11 +42,12 @@ export default new Vuex.Store({
             }, {
                 name: "탐험가형",
                 mbti: [istp, isfp, estp, esfp]
-            },
+            }
         ],
         mbti_style: `background-image: rgb(166,34,195);
         background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`,
-        movie_list:[]
+        movie_list: [],
+        mbti_list: []
     },
     getters: {},
     mutations: {
@@ -76,9 +78,11 @@ export default new Vuex.Store({
         setMbti(state, payload) {
             state.mbti = payload
         },
-        SET_MOVIE_LIST(state, payload){
+        SET_MOVIE_LIST(state, payload) {
             state.movie_list = payload
-            console.log(state.movie_list)
+        },
+        SET_MBTI_LIST(state, payload) {
+            state.mbti_list = payload
         }
     },
     actions: {
@@ -86,11 +90,24 @@ export default new Vuex.Store({
             axios
                 .get(`${API_URL}/movies`)
                 .then(res => {
-                    res.data.forEach(el => {
-                        el.genre_name = el.genre_name.split(',').slice(0, -1)
-                    });
+                    res
+                        .data
+                        .forEach(el => {
+                            el.genre_name = el
+                                .genre_name
+                                .split(',')
+                                .slice(0, -1)
+                        });
 
                     commit('SET_MOVIE_LIST', res.data)
+                })
+                .catch(err => console.log(err))
+            },
+        GET_MBTI_LIST({commit}) {
+            axios
+                .get(`${API_URL}/mbti_compabilities`)
+                .then(res => {
+                    commit('SET_MBTI_LIST', res.data)
                 })
                 .catch(err => console.log(err))
             }

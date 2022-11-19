@@ -39,3 +39,10 @@
      -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.etc_p_tag{
+    width: 100%;
+    text-align: right;
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    padding-right: 3em;
+}
