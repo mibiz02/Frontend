@@ -19,7 +19,8 @@ const routes = [
   {
     path: '/compatibility',
     name: 'compatibility',
-    component: CompatibilityView
+    component: CompatibilityView,
+    props : true
   },
   {
     path: '/movie',

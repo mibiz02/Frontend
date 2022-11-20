@@ -5,23 +5,11 @@
             <h1>로 보는 영화</h1>
         </div>
         <flickity class="flickity_character" ref="flickity" :options="flickityOptions">
-            <CharacterCard character_mbti="intj" />
-            <CharacterCard character_mbti="intp" />
-            <CharacterCard character_mbti="entj" />
-            <CharacterCard character_mbti="entp" />
-            <CharacterCard character_mbti="infj" />
-            <CharacterCard character_mbti="infp" />
-            <CharacterCard character_mbti="enfj" />
-            <CharacterCard character_mbti="enfp" />
-            <CharacterCard character_mbti="istj" />
-            <CharacterCard character_mbti="isfj" />
-            <CharacterCard character_mbti="estj" />
-            <CharacterCard character_mbti="esfj" />
-            <CharacterCard character_mbti="istp" />
-            <CharacterCard character_mbti="isfp" />
-            <CharacterCard character_mbti="estp" />
-            <CharacterCard character_mbti="esfp" />
+            <CharacterCard v-for="character in characterList" v-bind:key="character.id" :character="character" />
         </flickity>
+        <p class="etc_p_tag">
+            🎥 'XXXX'는 아직 논의 중인 MBTI입니다
+        </p>
     </div>
 </template>
 
@@ -34,6 +22,9 @@
             Flickity,
             CharacterCard
         },
+        props : {
+            characterList : Array
+        }, 
         data() {
             return {
                 flickityOptions: {
@@ -41,8 +32,7 @@
                     prevNextButtons: true,
                     wrapAround: true,
                     freeScroll: true
-                    // any options from Flickity can be used
-                }
+                },
             }
         },
         computed: {

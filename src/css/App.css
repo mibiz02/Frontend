@@ -14,3 +14,10 @@
 body {
     margin : 0;
 }
+
+.comment_body {
+    position: fixed;
+    bottom : 3em;
+    right:3em;
+    z-index: 100;
+}

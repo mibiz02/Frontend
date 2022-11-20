@@ -21,13 +21,17 @@
                     :type="item.type"
                     :text="item.text"
                     :imgUrl="item.imgUrl"
-                    :idx="page"/>
+                    :idx="page"
+                    @click.native="moveBtn(item)"
+                    />
                 <div id="mbti_name">{{mbti_lst[page].name}}</div>
             </div>
             <div @click="addPage" class="select_arrow">
                 <img :src="next" alt="next"/>
             </div>
-            
+        </div>
+        <div class="__to_compability">
+            <router-link to="/compatibility">나와 맞는 영화 캐릭터들 보러 가기 👉</router-link>
         </div>
     </div>
 </template>
@@ -40,7 +44,13 @@
             MbtiCard
         },
         data() {
-            return {mbti_lst: this.$store.state.type_mbti, page: 0, previous: require('../assets/previous.png'), next: require('../assets/next.png'), style: this.$store.state.mbti_style}
+            return {
+                mbti_lst: this.$store.state.type_mbti,
+                page: this.$store.state.idx,
+                previous: require('../assets/previous.png'),
+                next: require('../assets/next.png'),
+                style: this.$store.state.mbti_style,
+            }
         },
         computed: {
             getStyle() {
@@ -54,9 +64,10 @@
                     tmp = 0;
                 }
                 this.page = tmp
+                this.$store.commit('CHANGE_PAGE', tmp)
                 this
                     .$store
-                    .commit('setStyle', this.page)
+                    .commit('SET_STYLE', tmp)
             },
             subPage() {
                 let tmp = this.page - 1;
@@ -64,10 +75,17 @@
                     tmp = 3;
                 }
                 this.page = tmp
+                this.$store.commit('CHANGE_PAGE', tmp)
                 this
                     .$store
-                    .commit('setStyle', this.page)
-            }
+                    .commit('SET_STYLE', tmp)
+            },
+            moveBtn(item) {
+                const appearIcon = document.querySelector('.__to_compability');
+                appearIcon.style.display = 'block';
+
+                this.$store.commit('SET_MBTI', item.type)
+            },
         }
 
     }

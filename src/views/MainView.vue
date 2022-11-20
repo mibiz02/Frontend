@@ -5,7 +5,7 @@
             <MainTop />
             <div id="main-characters">
                 <InputMBTI />
-                <CharacterList />
+                <CharacterList :characterList="this.mbti_list"/>
             </div>
             <div id="main-movies">
                 <MovieList />
@@ -21,13 +21,25 @@
     import MovieList from '../layout/MovieList.vue'
     import CharacterList from '../layout/CharacterList.vue'
 
-    export default {name: 'MainView', components: {
+    export default {
+        name: 'MainView',
+        components: {
             MainNavBar,
             MainTop,
             InputMBTI,
             MovieList,
             CharacterList
-        }}
+        },
+        data(){
+            return {
+                mbti_list : this.$store.state.mbti_list
+            }
+        },
+        created() {
+            this.$store.dispatch('GET_MOVIE_LIST');
+            this.$store.dispatch('GET_MBTI_LIST');
+        }
+    }
 </script>
 
 <style>

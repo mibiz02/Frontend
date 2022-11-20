@@ -1,3 +1,7 @@
+#main-movies {
+    height: 100vh;
+}
+
 .flickity-page-dots {
     display: none;
    }
@@ -18,6 +22,10 @@
     overflow: visible;
 }
 
+.movie_list {
+    height: fit-content;
+}
+
 .movie_list_title {
     margin : 1em 3em;
     font-family: 'SBAggroB';
@@ -30,4 +38,11 @@
 .movie_list_title *:first-child {
      -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.etc_p_tag{
+    width: 100%;
+    text-align: right;
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    padding-right: 3em;
 }
