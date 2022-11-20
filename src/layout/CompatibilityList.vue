@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    {{check()}}
     <CompatibilityTitle :title="title" />   
     <div class="compatibility_list">
         <ul class="auto-grid" role="list">
@@ -24,9 +23,6 @@ export default {
         CompatibilityCard
     },
     methods : {
-        check() {
-            console.log(this.list)
-        }
     }
 }
 </script>

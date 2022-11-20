@@ -1,13 +1,20 @@
 <template>
     <div id="compatibility_view">
         <SignNavBar/>
-        <div class="view-body">
-            <CompatibilityTop/>
-            <div class="__list">
-              <CharacterList :characterList="this.character_list"/>
+        <div class="detail_view">
+            <div>
+                <div class="detail-body">
+                    <CompatibilityTop/>
+                    <div class="__list">
+                        <CharacterList :characterList="this.character_list"/>
+                    </div>
+                    <CompatibilityList title="좋은" :list="this.good_list"/>
+                    <CompatibilityList title="나쁜" :list="this.bad_list"/>
+                </div>
             </div>
-            <CompatibilityList title="좋은" :list="this.good_list"/>
-            <CompatibilityList title="나쁜" :list="this.bad_list" />
+            <div class="comment_body">
+                <CommentBox />
+            </div>
         </div>
     </div>
 </template>
@@ -17,6 +24,7 @@
     import CompatibilityTop from '../layout/CompatibilityTop.vue'
     import CharacterList from '../layout/CharacterList.vue'
     import CompatibilityList from '../layout/CompatibilityList.vue'
+    import CommentBox from '../layout/CommentBox.vue'
 
     export default {
         name: 'CompatiblityView',
@@ -24,15 +32,11 @@
             SignNavBar,
             CompatibilityTop,
             CharacterList,
-            CompatibilityList
+            CompatibilityList,
+            CommentBox
         },
         data() {
-          return {
-            mbti : this.$store.state.mbti,
-            character_list : this.$store.state.character_list,
-            good_list : this.$store.state.good_list,
-            bad_list : this.$store.state.bad_list
-          }
+            return {mbti: this.$store.state.mbti, character_list: this.$store.state.character_list, good_list: this.$store.state.good_list, bad_list: this.$store.state.bad_list}
         },
         created() {
             this
