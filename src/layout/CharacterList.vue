@@ -23,7 +23,7 @@
             CharacterCard
         },
         props : {
-            characterList : Object
+            characterList : Array
         }, 
         data() {
             return {

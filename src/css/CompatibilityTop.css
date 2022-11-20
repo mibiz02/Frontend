@@ -1,3 +1,7 @@
+#compatibility_view .__list {
+    width: 80vw;
+}
+
 #compatibility-page {
     display: flex;
     flex-direction: column;

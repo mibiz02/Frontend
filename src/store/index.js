@@ -48,7 +48,9 @@ export default new Vuex.Store({
                     background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`,
         movie_list: [],
         mbti_list: [],
-        character_list : []
+        character_list: [],
+        good_list: [],
+        bad_list: []
     },
     getters: {},
     mutations: {
@@ -90,6 +92,12 @@ export default new Vuex.Store({
         },
         SET_CHARACTER_LIST(state, payload) {
             state.character_list = payload
+        },
+        SET_GOOD_LIST(state, payload) {
+            state.good_list = payload
+        },
+        SET_BAD_LIST(state, payload) {
+            state.bad_list = payload
         }
     },
     actions: {
@@ -118,17 +126,38 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
             },
-        GET_CHARACTER_LIST({ commit }, payload) {
+        GET_CHARACTER_LIST({
+            commit
+        }, payload) {
             axios
                 .get(`${API_URL}/mbti_compabilities/${payload}`)
                 .then(res => {
-                    console.log(res.data)
                     commit('SET_CHARACTER_LIST', res.data)
                 })
                 .catch(err => {
                     console.log(err)
                 })
-            }
+            },
+        GET_GOOD_LIST({commit}, payload) {
+            axios
+                .get(`${API_URL}/mbti_compabilities/type/${payload}/good`)
+                .then(res => {
+                    commit('SET_GOOD_LIST', res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        },
+        GET_BAD_LIST({commit}, payload) {
+            axios
+                .get(`${API_URL}/mbti_compabilities/type/${payload}/bad`)
+                .then(res => {
+                    commit('SET_BAD_LIST', res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     },
     modules: {},
     plugins: [createPersistedState()]
