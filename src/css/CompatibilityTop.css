@@ -1,4 +1,33 @@
+#compatibility-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#compatibility-page * {
+    margin:0;
+} 
+
 #compatibility-page h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+#compatibility-page h2 {
+    font-family: 'SBAggroB';
+    font-size: 250%;
+}
+
+#compatibility-page p {
+    font-family: 'LeferiPoint-WhiteObliqueA';
+}
+
+#compatibility-page h2, #compatibility-page p, #compatibility-page img {
+    margin-bottom: 0.5em;
+}
+
+#compatibility-page img {
+    width: 20vw;
+    margin-top: 0.5em;
 }

@@ -28,7 +28,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         mbti: '',
-        idx : 1,
+        idx : 0,
         type_mbti: [
             {
                 name: "분석가형",
@@ -45,13 +45,13 @@ export default new Vuex.Store({
             }
         ],
         mbti_style: `background-image: rgb(166,34,195);
-        background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`,
+                    background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`,
         movie_list: [],
         mbti_list: []
     },
     getters: {},
     mutations: {
-        setStyle(state, payload) {
+        SET_STYLE(state, payload) {
             let style = ''
 
             switch (payload) {
@@ -75,7 +75,10 @@ export default new Vuex.Store({
 
             state.mbti_style = style
         },
-        setMbti(state, payload) {
+        CHANGE_PAGE(state, payload) {
+            state.idx = payload;
+        },
+        SET_MBTI(state, payload) {
             state.mbti = payload
         },
         SET_MOVIE_LIST(state, payload) {
@@ -110,7 +113,10 @@ export default new Vuex.Store({
                     commit('SET_MBTI_LIST', res.data)
                 })
                 .catch(err => console.log(err))
-            }
+            },
+        // GET_CHARACTER_LIST({commit}, payload) {
+        //     console.log(payload)
+        // }
     },
     modules: {},
     plugins: [createPersistedState()]

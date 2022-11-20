@@ -8,10 +8,13 @@
     line-height: 0;
 }
 
+.main-font h1 {
+    margin-bottom: 0.3em;
+}
+
 .main-font h1, #compatibility-page h1 {
     font-size: 8vw;
     font-family: 'SBAggroB';
-    margin-bottom: 0.3em;
 }
 
 .main-line {
