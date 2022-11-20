@@ -28,7 +28,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         mbti: '',
-        idx : 0,
+        idx: 0,
         type_mbti: [
             {
                 name: "분석가형",
@@ -47,7 +47,8 @@ export default new Vuex.Store({
         mbti_style: `background-image: rgb(166,34,195);
                     background-image: linear-gradient(0deg, rgba(166,34,195,1) 0%, rgba(253,45,77,1) 100%);`,
         movie_list: [],
-        mbti_list: []
+        mbti_list: [],
+        character_list : []
     },
     getters: {},
     mutations: {
@@ -86,6 +87,9 @@ export default new Vuex.Store({
         },
         SET_MBTI_LIST(state, payload) {
             state.mbti_list = payload
+        },
+        SET_CHARACTER_LIST(state, payload) {
+            state.character_list = payload
         }
     },
     actions: {
@@ -114,9 +118,17 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
             },
-        // GET_CHARACTER_LIST({commit}, payload) {
-        //     console.log(payload)
-        // }
+        GET_CHARACTER_LIST({ commit }, payload) {
+            axios
+                .get(`${API_URL}/mbti_compabilities/${payload}`)
+                .then(res => {
+                    console.log(res.data)
+                    commit('SET_CHARACTER_LIST', res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
     },
     modules: {},
     plugins: [createPersistedState()]

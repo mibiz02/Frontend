@@ -22,6 +22,9 @@
             Flickity,
             CharacterCard
         },
+        props : {
+            characterList : Object
+        }, 
         data() {
             return {
                 flickityOptions: {
@@ -30,7 +33,6 @@
                     wrapAround: true,
                     freeScroll: true
                 },
-                characterList: this.$store.state.mbti_list
             }
         },
         computed: {

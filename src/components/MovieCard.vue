@@ -19,7 +19,7 @@
                 <div class="movie-overview">
                     {{movie.overview}}
                 </div>
-                <div class="movie-see">See The Book</div>
+                <div class="movie-see">See The More</div>
             </div>
         </div>
     </template>

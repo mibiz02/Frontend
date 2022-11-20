@@ -5,7 +5,7 @@
             <MainTop />
             <div id="main-characters">
                 <InputMBTI />
-                <CharacterList />
+                <CharacterList :characterList="this.mbti_list"/>
             </div>
             <div id="main-movies">
                 <MovieList />
@@ -29,6 +29,11 @@
             InputMBTI,
             MovieList,
             CharacterList
+        },
+        data(){
+            return {
+                mbti_list : this.$store.state.mbti_list
+            }
         },
         created() {
             this.$store.dispatch('GET_MOVIE_LIST');
