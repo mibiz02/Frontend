@@ -56,7 +56,13 @@ input {
     border-radius: 1em;
     background-color: transparent;
     color : white;
-    font-family: 'LeferiPoint-WhiteObliqueA';
+    font-family: 'GothicA1-Light';
+}
+
+.container .__input_box p {
+    margin: 0;
+    font-size: 1em;
+    padding:0;
 }
 
 .__sign_btn {

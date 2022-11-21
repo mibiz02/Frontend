@@ -173,7 +173,7 @@ export default new Vuex.Store({
             const {username, email, password1, password2} = payload;
 
             axios({
-                method: 'POST',
+                method: 'post',
                 url: `${API_URL}/accounts/signup/`,
                 data: {
                     username,
