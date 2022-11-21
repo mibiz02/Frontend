@@ -50,7 +50,8 @@ export default new Vuex.Store({
         mbti_list: [],
         character_list: [],
         good_list: [],
-        bad_list: []
+        bad_list: [],
+        movie : {}
     },
     getters: {},
     mutations: {
@@ -98,6 +99,9 @@ export default new Vuex.Store({
         },
         SET_BAD_LIST(state, payload) {
             state.bad_list = payload
+        },
+        SET_MOVIE_DATA(state, payload) {
+            state.movie = payload
         }
     },
     actions: {
@@ -157,7 +161,24 @@ export default new Vuex.Store({
                 .catch(err => {
                     console.log(err)
                 })
-        }
+        },
+        GET_MOVIE_DATA({commit}, payload) {
+            axios
+                .get(`${API_URL}/movies/${payload}`)
+                .then(res => {
+                    res
+                        .data
+                        .forEach(el => {
+                            el.genre_name = el
+                                .genre_name
+                                .split(',')
+                                .slice(0, -1)
+                        });
+
+                    commit('SET_MOVIE_DATA', res.data)
+                })
+                .catch(err => console.log(err))
+            }
     },
     modules: {},
     plugins: [createPersistedState()]

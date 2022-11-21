@@ -1,7 +1,7 @@
 <template>
     <div class="movie_list_title">
         <h1 :style="getStyle">{{title}} </h1>
-        <h1>궁합의 캐릭터들은?</h1>
+        <h1> 캐릭터들은?</h1>
     </div>
 </template>
 

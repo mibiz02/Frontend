@@ -8,8 +8,8 @@
                     <div class="__list">
                         <CharacterList :characterList="this.character_list"/>
                     </div>
-                    <CompatibilityList title="좋은" :list="this.good_list"/>
-                    <CompatibilityList title="나쁜" :list="this.bad_list"/>
+                    <CompatibilityList title="좋은 궁합의" :list="this.good_list"/>
+                    <CompatibilityList title="나쁜 궁합의" :list="this.bad_list"/>
                 </div>
             </div>
             <div class="comment_body">
