@@ -28,23 +28,23 @@
         },
         data() {
             return {
-                email : '',
+                username : '',
                 password : ''
             }
         },
         methods : {
             getUserName(e) {
-                this.email = e.target.value
+                this.username = e.target.value
             },
             getPassword(e) {
                 this.password = e.target.value
             },
             logIn() {
-                const email = this.email
+                const username = this.username
                 const password = this.password
 
                 const payload = {
-                    email, password
+                    username, password
                 }
 
                 this.$store.dispatch('LOGIN', payload)

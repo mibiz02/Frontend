@@ -2,7 +2,7 @@
     <div class="characterCard">
         <img
             class="__movie"
-            src="https://images-na.ssl-images-amazon.com/images/I/81WcnNQ-TBL.jpg"
+            :src="character.movie_img_path"
             alt=""/>
         <img
             class="__character_profile"
@@ -11,7 +11,7 @@
             <div class="__info">
                 <div class="__name">{{character.character_name}}</div>
                 <div class="__mbti" :style="style">{{character.character_MBTI_type}}</div>
-                <div class="__movie_title">🎬 {{character.original_movie_title}}</div>
+                <div class="__movie_title">🎬 {{character.movie_title}}</div>
             </div>
         </div>
     </template>

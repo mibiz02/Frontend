@@ -52,7 +52,8 @@ export default new Vuex.Store({
         good_list: [],
         bad_list: [],
         movie : {},
-        token: ''
+        token: '',
+        isLogin : false
     },
     getters: {},
     mutations: {
@@ -209,15 +210,15 @@ export default new Vuex.Store({
             .catch(err => console.log(err))
         },
         LOGIN(context, payload) {
-            const {email, password} = payload
+            const {username, password} = payload
 
-            console.log(email, password)
+            console.log(username, password)
 
             axios({
                 method:'POST',
                 url:`${API_URL}/accounts/login/`,
                 data: {
-                    email, password
+                    username, password
                 }
             }).then(res => {
                 context.commit('SAVE_TOKEN', res.data.key)
