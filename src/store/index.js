@@ -52,6 +52,7 @@ export default new Vuex.Store({
         good_list: [],
         bad_list: [],
         movie : {}
+        token: ''
     },
     getters: {},
     mutations: {
@@ -102,6 +103,11 @@ export default new Vuex.Store({
         },
         SET_MOVIE_DATA(state, payload) {
             state.movie = payload
+        SIGN_UP(state, token) {
+            state.token = token
+        },
+        SAVE_TOKEN(state, token) {
+            state.token = token
         }
     },
     actions: {
@@ -142,7 +148,9 @@ export default new Vuex.Store({
                     console.log(err)
                 })
             },
-        GET_GOOD_LIST({commit}, payload) {
+        GET_GOOD_LIST({
+            commit
+        }, payload) {
             axios
                 .get(`${API_URL}/mbti_compabilities/type/${payload}/good`)
                 .then(res => {
@@ -151,8 +159,10 @@ export default new Vuex.Store({
                 .catch(err => {
                     console.log(err)
                 })
-        },
-        GET_BAD_LIST({commit}, payload) {
+            },
+        GET_BAD_LIST({
+            commit
+        }, payload) {
             axios
                 .get(`${API_URL}/mbti_compabilities/type/${payload}/bad`)
                 .then(res => {
@@ -179,6 +189,39 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
             }
+        SIGN_UP(context, payload) {
+            const {username, email, password1, password2} = payload;
+
+            axios({
+                method: 'post',
+                url: `${API_URL}/accounts/signup/`,
+                data: {
+                    username,
+                    email,
+                    password1,
+                    password2
+                }
+            })
+            .then(res => {
+                context.commit('SIGN_UP', res.data.key)
+            })
+            .catch(err => console.log(err))
+        },
+        LOGIN(context, payload) {
+            const {email, password} = payload
+
+            console.log(email, password)
+
+            axios({
+                method:'POST',
+                url:`${API_URL}/accounts/login/`,
+                data: {
+                    email, password
+                }
+            }).then(res => {
+                context.commit('SAVE_TOKEN', res.data.key)
+            }).catch(err => console.log(err))
+        }
     },
     modules: {},
     plugins: [createPersistedState()]
