@@ -19,7 +19,7 @@
                 <div class="movie-overview">
                     {{movie.overview}}
                 </div>
-                <div class="movie-see">See The More</div>
+                <div class="movie-see" @click="goDetail">See The More</div>
             </div>
         </div>
     </template>
@@ -33,6 +33,16 @@
             computed : {
                 setMovieYear() {
                     return this.movie.release_date.split('-')[0]
+                }
+            },
+            methods: {
+                goDetail() {
+                    this.$router.push({
+                        name:'movie',
+                        query:{
+                            id: this.movie.id
+                        }
+                    })
                 }
             }
         }

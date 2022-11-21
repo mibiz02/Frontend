@@ -51,6 +51,7 @@ export default new Vuex.Store({
         character_list: [],
         good_list: [],
         bad_list: [],
+        movie : {}
         token: ''
     },
     getters: {},
@@ -100,6 +101,8 @@ export default new Vuex.Store({
         SET_BAD_LIST(state, payload) {
             state.bad_list = payload
         },
+        SET_MOVIE_DATA(state, payload) {
+            state.movie = payload
         SIGN_UP(state, token) {
             state.token = token
         },
@@ -168,7 +171,24 @@ export default new Vuex.Store({
                 .catch(err => {
                     console.log(err)
                 })
-            },
+        },
+        GET_MOVIE_DATA({commit}, payload) {
+            axios
+                .get(`${API_URL}/movies/${payload}`)
+                .then(res => {
+                    res
+                        .data
+                        .forEach(el => {
+                            el.genre_name = el
+                                .genre_name
+                                .split(',')
+                                .slice(0, -1)
+                        });
+
+                    commit('SET_MOVIE_DATA', res.data)
+                })
+                .catch(err => console.log(err))
+            }
         SIGN_UP(context, payload) {
             const {username, email, password1, password2} = payload;
 
