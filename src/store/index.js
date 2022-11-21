@@ -51,7 +51,7 @@ export default new Vuex.Store({
         character_list: [],
         good_list: [],
         bad_list: [],
-        movie : {}
+        movie : {},
         token: ''
     },
     getters: {},
@@ -103,6 +103,7 @@ export default new Vuex.Store({
         },
         SET_MOVIE_DATA(state, payload) {
             state.movie = payload
+        },
         SIGN_UP(state, token) {
             state.token = token
         },
@@ -188,7 +189,7 @@ export default new Vuex.Store({
                     commit('SET_MOVIE_DATA', res.data)
                 })
                 .catch(err => console.log(err))
-            }
+            },
         SIGN_UP(context, payload) {
             const {username, email, password1, password2} = payload;
 
