@@ -10,6 +10,10 @@
             <div id="main-movies">
                 <MovieList />
             </div>
+            <div id="main-footer">
+                <a href="https://cookie-biplane-8d4.notion.site/MIBIZ-c2ec7afaa27649bf8fb37eb61dce32d4" target="__blank"><img :src="require('../assets/notion.png')" alt="notion"></a>
+                <a href="https://github.com/mibiz02" target="__blank"><img :src="require('../assets/git.png')"  alt="git"></a>
+            </div>
         </div>
     </div>
 </template>

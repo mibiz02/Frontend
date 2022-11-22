@@ -35,3 +35,13 @@
     margin-bottom: -1.7em;
     height: 100%;
 }
+
+#main-footer {
+    width: 100%;
+    text-align: right;
+}
+
+#main-footer *{
+    width: 5em;
+    margin-left: 1em;
+}
