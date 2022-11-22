@@ -98,11 +98,11 @@
     text-decoration: none;
 }
 
-.__go_sign {
+.__go_sign, .__go_mypage {
     text-align: right;
 }
 
-.__go_sign *{
+.__go_sign *, .__go_mypage *{
     padding: 0 1em;
     font-family: 'SBAggroB';
     text-decoration: none;
@@ -112,7 +112,7 @@
     border-right: solid 1px white;
 }
 
-.__go_sign *:hover {
+.__go_sign *:hover, .__go_mypage *:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-image: rgb(232,139,52);

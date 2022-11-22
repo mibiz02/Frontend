@@ -77,7 +77,7 @@ export const istp = {
 }
 
 export const isfp = {
-    type: 'ISFJ',
+    type: 'ISFP',
     text: "모험가",
     imgUrl: 'isfp.png'
 }
