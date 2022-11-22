@@ -7,12 +7,12 @@
                 <h3>회원가입</h3>
             </div>
             <div class="__input_box">
+                <input type="text" v-model="username" placeholder="id"/>
                 <input type="text" v-model="name" placeholder="닉네임"/>
-                <input type="text" v-model="email" placeholder="example@example.com"/>
                 <p>비밀번호는 영문, 숫자, 특수문자를 조합하여 입력해주세요(8-16자) </p>
                 <input type="text" v-model="password1" placeholder="비밀번호"/>
                 <input type="text" v-model="password2" placeholder="비밀번호 확인"/>
-                <!-- <input type="text" placeholder="MBTI" @input="getMbti"/> -->
+                <input type="text" placeholder="MBTI" @input="getMbti"/>
             </div>
             <button type="submit" class="__sign_btn" @click="signUp">완료</button>
         </div>
@@ -28,12 +28,12 @@
             SignNavBar
         },
         data() {
-            return {name: '', email: '', password1: '', password2: '', mbti: ''}
+            return {name: '', username: '', password1: '', password2: '', mbti: ''}
         },
         methods: {
-            CheckEmail(email) {
+            CheckEmail(username) {
                 let reg_email = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-Za-z0-9\\-]+/
-                return (!reg_email.test(email))
+                return (!reg_email.test(username))
                     ? true
                     : false;
             },
@@ -44,22 +44,23 @@
                 return (!validatePassword.test(password)) ? true : false;
              }, 
             signUp() {
-                const username = this.name
-                const email = this.email
+                const name = this.name
+                const username = this.username
                 const password1 = this.password1
                 const password2 = this.password2
-                // const mbti = this.mbti
+                const mbti = this.mbti
 
                 const payload = {
+                    name,
                     username,
-                    email,
                     password1,
-                    password2
+                    password2,
+                    mbti
                 }
 
                 if (Object.values(payload).includes('')) {
                     alert('빈 칸이 있습니다');
-                } else if (this.CheckEmail(email)) {
+                } else if (this.CheckEmail(username)) {
                     alert('이메일 양식을 지켜주세요')
                 } else if (password1 !== password2) {
                     alert('비밀번호와 비밀번호 확인이 다릅니다');
