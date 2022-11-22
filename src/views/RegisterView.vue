@@ -7,12 +7,12 @@
                 <h3>회원가입</h3>
             </div>
             <div class="__input_box">
-                <input type="text" v-model="username" placeholder="id"/>
-                <input type="text" v-model="name" placeholder="닉네임"/>
+                <input type="text" v-model="name" placeholder="id"/>
+                <input type="text" v-model="email" placeholder="example@example.com"/>
                 <p>비밀번호는 영문, 숫자, 특수문자를 조합하여 입력해주세요(8-16자) </p>
                 <input type="text" v-model="password1" placeholder="비밀번호"/>
                 <input type="text" v-model="password2" placeholder="비밀번호 확인"/>
-                <input type="text" placeholder="MBTI" @input="getMbti"/>
+                <input type="text" placeholder="MBTI" v-model="mbti"/>
             </div>
             <button type="submit" class="__sign_btn" @click="signUp">완료</button>
         </div>
