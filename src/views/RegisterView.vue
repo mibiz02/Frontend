@@ -48,7 +48,7 @@
                 const email = this.email
                 const password1 = this.password1
                 const password2 = this.password2
-                const mbti = this.mbti
+                const mbti = this.mbti.toUpperCase()
 
                 const payload = {
                     username,
