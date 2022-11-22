@@ -1,6 +1,5 @@
 <template>
     <div>
-        {{getData()}}
         <SignNavBar />
         <MovieDetail :movie="this.$store.state.movie"/>
         <CompatibilityList title="등장하는"/>
@@ -19,10 +18,8 @@
         SignNavBar,
         CompatibilityList
       },
-      methods: {
-          getData() {
+      created() {
               this.$store.dispatch('GET_MOVIE_DATA', this.$route.query.id)
-          }
       }
   }
 </script>

@@ -8,9 +8,7 @@
                     <div class="detail-subtext">{{setMovieYear}}</div>
                     <div class="detail-genre">
                         <div
-                            class="detail-subtext"
-                            v-for="genre in movie.genre_name"
-                            v-bind:key="genre">{{genre}}</div>
+                            class="detail-subtext">{{movie.genre_name}}</div>
                     </div>
                     <div class="detail-subtext">popularity :
                         {{movie.popularity}}</div>
@@ -34,7 +32,6 @@
             },
             computed: {
                 setMovieYear() {
-                    console.log(this.movie)
                     return this
                         .movie
                         .release_date
