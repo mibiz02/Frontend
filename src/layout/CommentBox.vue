@@ -1,23 +1,7 @@
 <template>
   <div class="__input_box comment_box">
         <div class="__comment">
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
-            <ChatBubble />
+            <ChatBubble v-for="bubble in bubbles" v-bind:key="bubble.id" :context="bubble.context"/>
         </div>
         <input type="text" placeholder="Comment" @keyup.enter="enterComment"/>
         
@@ -32,9 +16,15 @@ export default {
     components: {
         ChatBubble
     },
+    data() {
+        return {
+            bubbles : []
+        }
+    },
     methods:{
         enterComment(e) {
-            console.log(e.target.value)
+            this.bubbles.push({id : this.bubbles.length, context : e.target.value})
+            document.querySelector('input').value = ''
         }
     }
 }
