@@ -5,7 +5,7 @@
             <h1>들이 선택한 영화</h1>
         </div>
         <flickity class="flickity_movie_list" ref="flickity" :options="flickityOptions">
-            <MovieCard v-for="movie in movieData" v-bind:key="movie.id" :movie="movie"/>
+            <MovieCard v-for="movie in movieData" v-bind:key="movie.title" :movie="movie"/>
         </flickity>
     </div>
 </template>

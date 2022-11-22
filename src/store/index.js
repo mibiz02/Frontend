@@ -178,14 +178,14 @@ export default new Vuex.Store({
             axios
                 .get(`${API_URL}/movies/${payload}`)
                 .then(res => {
-                    res
-                        .data
-                        .forEach(el => {
-                            el.genre_name = el
-                                .genre_name
-                                .split(',')
-                                .slice(0, -1)
-                        });
+                    // res
+                    //     .data
+                    //     .forEach(el => {
+                    //         el.genre_name = el
+                    //             .genre_name
+                    //             .split(',')
+                    //             .slice(0, -1)
+                    //     });
 
                     commit('SET_MOVIE_DATA', res.data)
                 })

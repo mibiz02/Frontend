@@ -16,7 +16,7 @@
 .__comment {
     display: flex;
     height: 73vh;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-end;
     top: 5em;
     bottom: 0;
