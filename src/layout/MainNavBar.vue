@@ -29,16 +29,27 @@
                 </a>
             </li>
         </ul>
-        <div class="__go_sign">
-            <router-link to="/login" >Login</router-link>
-            <router-link to="/register" >Register</router-link>
+        <div class="__go_sign" v-if="!isLogined">
+            <router-link to="/login">Login</router-link>
+            <router-link to="/register">Register</router-link>
         </div>
-
+        <div class="__go_mypage" v-if="isLogined">
+            <router-link to="/mypage">MyPage</router-link>
+        </div>
     </nav>
 </template>
 
 <script>
-    export default {}
+    export default {
+        name: 'mainNavBar',
+        computed: {
+            isLogined() {
+                return (this.$store.state.isLogin)
+                    ? true
+                    : false
+            }
+        }
+    }
 </script>
 
 <style>

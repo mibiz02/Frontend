@@ -1,10 +1,20 @@
 <template>
-  <div>mypage</div>
+  <div>
+    <SignNavBar />
+    <MyPageTop />
+  </div>
 </template>
 
 <script>
-export default {
+import MyPageTop from '../layout/MyPageTop.vue'
+import SignNavBar from '../layout/SignNavBar.vue'
 
+export default {
+  name : 'MyPageView',
+  components : {
+    MyPageTop,
+    SignNavBar
+  }
 }
 </script>
 

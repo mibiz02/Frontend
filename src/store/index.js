@@ -117,15 +117,6 @@ export default new Vuex.Store({
             axios
                 .get(`${API_URL}/movies`)
                 .then(res => {
-                    res
-                        .data
-                        .forEach(el => {
-                            el.genre_name = el
-                                .genre_name
-                                .split(',')
-                                .slice(0, -1)
-                        });
-
                     commit('SET_MOVIE_LIST', res.data)
                 })
                 .catch(err => console.log(err))
@@ -192,7 +183,7 @@ export default new Vuex.Store({
                 .catch(err => console.log(err))
             },
         SIGN_UP(context, payload) {
-            const {username, email, password1, password2} = payload;
+            const {username, email, password1, password2, mbti} = payload;
 
             axios({
                 method: 'post',
@@ -201,7 +192,8 @@ export default new Vuex.Store({
                     username,
                     email,
                     password1,
-                    password2
+                    password2,
+                    mbti
                 }
             })
             .then(res => {
@@ -212,8 +204,6 @@ export default new Vuex.Store({
         LOGIN(context, payload) {
             const {username, password} = payload
 
-            console.log(username, password)
-
             axios({
                 method:'POST',
                 url:`${API_URL}/accounts/login/`,
@@ -221,6 +211,7 @@ export default new Vuex.Store({
                     username, password
                 }
             }).then(res => {
+                this.state.isLogin = true
                 context.commit('SAVE_TOKEN', res.data.key)
             }).catch(err => console.log(err))
         }
