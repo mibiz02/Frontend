@@ -53,7 +53,8 @@
         created() {
             this.getCharacterList(),
             this.getGoodList(),
-            this.getBadList()
+            this.getBadList(),
+            window.scrollTo(0,0)
         }
     }
 </script>

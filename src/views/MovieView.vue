@@ -31,6 +31,7 @@
             return {movieData: {}, characterData: {}, id : this.$route.query.id}
         },
         created() {
+            window.scrollTo(0,0);
             axios
                 .get(`${API_URL}/movies/${this.id}`)
                 .then(res => {
