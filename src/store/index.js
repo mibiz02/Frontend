@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
+import { API_URL } from './api'
 import {
     intj,
     intp,
@@ -21,13 +22,10 @@ import {
     esfp
 } from './mbtis'
 
-const API_URL = 'http://127.0.0.1:8000'
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        mbti: '',
         idx: 0,
         type_mbti: [
             {
@@ -51,11 +49,19 @@ export default new Vuex.Store({
         character_list: [],
         good_list: [],
         bad_list: [],
-        movie : {},
+        movie: {},
         token: '',
-        isLogin : false
+        isLogin: false,
+        comments: []
     },
-    getters: {},
+    getters: {
+        GET_MOVIE_LIST(state) {
+            return state.movie_list
+        },
+        GET_COMMENTS(state) {
+            return state.comments
+        }
+    },
     mutations: {
         SET_STYLE(state, payload) {
             let style = ''
@@ -84,14 +90,13 @@ export default new Vuex.Store({
         CHANGE_PAGE(state, payload) {
             state.idx = payload;
         },
-        SET_MBTI(state, payload) {
-            state.mbti = payload
-        },
         SET_MOVIE_LIST(state, payload) {
             state.movie_list = payload
+            console.log(state.movie_list)
         },
         SET_MBTI_LIST(state, payload) {
             state.mbti_list = payload
+            console.log(state.mbti_list)
         },
         SET_CHARACTER_LIST(state, payload) {
             state.character_list = payload
@@ -110,6 +115,14 @@ export default new Vuex.Store({
         },
         SAVE_TOKEN(state, token) {
             state.token = token
+        },
+        GET_COMMENTS(state, payload) {
+            state.comments = payload
+        },
+        ADD_COMMENTS(state, payload) {
+            state
+                .comments
+                .push(payload.bubble)
         }
     },
     actions: {
@@ -164,57 +177,64 @@ export default new Vuex.Store({
                 .catch(err => {
                     console.log(err)
                 })
-        },
-        GET_MOVIE_DATA({commit}, payload) {
+            },
+        GET_MOVIE_DATA({
+            commit
+        }, payload) {
             axios
                 .get(`${API_URL}/movies/${payload}`)
                 .then(res => {
-                    // res
-                    //     .data
-                    //     .forEach(el => {
-                    //         el.genre_name = el
-                    //             .genre_name
-                    //             .split(',')
-                    //             .slice(0, -1)
-                    //     });
-
                     commit('SET_MOVIE_DATA', res.data)
                 })
                 .catch(err => console.log(err))
             },
         SIGN_UP(context, payload) {
-            const {username, email, password1, password2, mbti} = payload;
+            const {
+                username,
+                nickname,
+                email,
+                password1,
+                password2,
+                MBTI_type
+            } = payload;
 
             axios({
                 method: 'post',
                 url: `${API_URL}/accounts/signup/`,
                 data: {
                     username,
+                    nickname,
                     email,
                     password1,
                     password2,
-                    mbti
+                    MBTI_type
                 }
             })
-            .then(res => {
-                context.commit('SIGN_UP', res.data.key)
-            })
-            .catch(err => console.log(err))
-        },
+                .then(res => {
+                    context.commit('SIGN_UP', res.data.key)
+                    window.location.href = 'http://localhost:8080/login'
+                })
+                .catch(err => console.log(err))
+            },
         LOGIN(context, payload) {
             const {username, password} = payload
 
             axios({
-                method:'POST',
-                url:`${API_URL}/accounts/login/`,
+                method: 'POST',
+                url: `${API_URL}/accounts/login/`,
                 data: {
-                    username, password
+                    username,
+                    password
                 }
-            }).then(res => {
-                this.state.isLogin = true
-                context.commit('SAVE_TOKEN', res.data.key)
-            }).catch(err => console.log(err))
-        }
+            })
+                .then(res => {
+                    this.state.isLogin = true
+                    context.commit('SAVE_TOKEN', res.data.key)
+                    window.location.href = 'http://localhost:8080/'
+                })
+                .catch(err => console.log(err))
+            },
+        
     },
     modules: {},
     plugins: [createPersistedState()]

@@ -8,6 +8,7 @@
             </div>
             <div class="__input_box">
                 <input type="text" v-model="username" placeholder="id"/>
+                <input type="text" v-model="nickname" placeholder="닉네임"/>
                 <input type="text" v-model="email" placeholder="example@example.com"/>
                 <p>비밀번호는 영문, 숫자, 특수문자를 조합하여 입력해주세요(8-16자) </p>
                 <input type="text" v-model="password1" placeholder="비밀번호"/>
@@ -28,7 +29,7 @@
             SignNavBar
         },
         data() {
-            return {username: '', email: '', password1: '', password2: '', mbti: ''}
+            return {username: '', nickname:'', email: '', password1: '', password2: '', mbti: ''}
         },
         methods: {
             CheckEmail(username) {
@@ -45,17 +46,19 @@
              }, 
             signUp() {
                 const username = this.username
+                const nickname = this.nickname
                 const email = this.email
                 const password1 = this.password1
                 const password2 = this.password2
-                const mbti = this.mbti.toUpperCase()
+                const MBTI_type = this.mbti.toUpperCase()
 
                 const payload = {
                     username,
+                    nickname,
                     email,
                     password1,
                     password2,
-                    mbti
+                    MBTI_type
                 }
 
                 if (Object.values(payload).includes('')) {

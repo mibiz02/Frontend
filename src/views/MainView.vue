@@ -39,14 +39,23 @@
                 mbti_list : this.$store.state.mbti_list
             }
         },
+        methods:{
+            getMbtiList() {
+                this.$store.dispatch('GET_MBTI_LIST');
+            },
+            getMovieList() {
+                this.$store.dispatch('GET_MOVIE_LIST');
+            }
+        },
         created() {
-            this.$store.dispatch('GET_MOVIE_LIST');
-            this.$store.dispatch('GET_MBTI_LIST');
+            this.getMbtiList()
+            this.getMovieList()
         }
     }
 </script>
 
 <style>
+    @import '../css/Flickity.css';
     .view-body {
         padding-top: 5em;
         width: 100%;

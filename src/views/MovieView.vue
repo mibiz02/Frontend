@@ -4,7 +4,7 @@
         <MovieDetail :movie="this.$store.state.movie"/>
         <CompatibilityList title="등장하는"/>
         <div class="comment_body">
-            <CommentBox/>
+            <CommentBox :movie_id="$route.query.id" />
         </div>
     </div>
 </template>

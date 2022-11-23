@@ -4,50 +4,56 @@
         <div class="detail_view">
             <div>
                 <div class="detail-body">
-                    <CompatibilityTop/>
+                    <compatibility-top :mbti="this.mbti" />
                     <div class="__list">
-                        <CharacterList :characterList="this.character_list"/>
+                        <character-list :characterList="this.$store.state.character_list" />
                     </div>
-                    <CompatibilityList title="좋은 궁합의" :list="this.good_list"/>
-                    <CompatibilityList title="나쁜 궁합의" :list="this.bad_list"/>
+                    <compatibility-list title="좋은 궁합의" :list="this.$store.state.good_list" />
+                    <compatibility-list title="나쁜 궁합의" :list="this.$store.state.bad_list" />
                 </div>
             </div>
-            <div class="comment_body">
+        </div>
+        <div class="comment_body">
                 <CommentBox />
             </div>
-        </div>
     </div>
 </template>
 
 <script>
-    import SignNavBar from '../layout/SignNavBar.vue'
     import CompatibilityTop from '../layout/CompatibilityTop.vue'
     import CharacterList from '../layout/CharacterList.vue'
+    import SignNavBar from '../layout/SignNavBar.vue'
     import CompatibilityList from '../layout/CompatibilityList.vue'
     import CommentBox from '../layout/CommentBox.vue'
 
     export default {
-        name: 'CompatiblityView',
+        name: 'CompatibilityView',
+        data() {
+            return {
+                mbti : this.$route.query.mbti
+            }
+        },
         components: {
-            SignNavBar,
             CompatibilityTop,
             CharacterList,
+            SignNavBar,
             CompatibilityList,
             CommentBox
-        },
-        data() {
-            return {mbti: this.$store.state.mbti, character_list: this.$store.state.character_list, good_list: this.$store.state.good_list, bad_list: this.$store.state.bad_list}
+        },methods : {
+            getCharacterList() {
+                this.$store.dispatch('GET_CHARACTER_LIST', this.mbti)
+            },
+            getGoodList() {
+                this.$store.dispatch('GET_GOOD_LIST', this.mbti)
+            },
+            getBadList() {
+                this.$store.dispatch('GET_BAD_LIST', this.mbti)
+            }
         },
         created() {
-            this
-                .$store
-                .dispatch('GET_CHARACTER_LIST', this.mbti);
-            this
-                .$store
-                .dispatch('GET_GOOD_LIST', this.mbti.toUpperCase());
-            this
-                .$store
-                .dispatch('GET_BAD_LIST', this.mbti.toUpperCase());
+            this.getCharacterList(),
+            this.getGoodList(),
+            this.getBadList()
         }
     }
 </script>
