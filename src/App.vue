@@ -1,20 +1,17 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
 
 <script>
 
-export default {
-  name:'app',
-  components:{
-  }
-}
+    export default {
+        name: 'app'
+    }
 </script>
 
 <style>
-@import './css/Font.css';
-@import './css/App.css';
-
+    @import './css/Font.css';
+    @import './css/App.css';
 </style>

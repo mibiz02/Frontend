@@ -7,12 +7,13 @@ import MovieView from '../views/MovieView'
 import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
 import MyPageView from '../views/MyPageView'
+import LoadingView from '../views/LoadingView'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/main',
     name: 'main',
     component: MainView
   },
@@ -47,6 +48,11 @@ const routes = [
     name: 'error',
     component: ErrorView
   },
+  {
+    path:'/',
+    name : 'loadingView',
+    component : LoadingView
+  }
 ]
 
 const router = new VueRouter({

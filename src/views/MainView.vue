@@ -38,18 +38,6 @@
             return {
                 mbti_list : this.$store.state.mbti_list
             }
-        },
-        methods:{
-            getMbtiList() {
-                this.$store.dispatch('GET_MBTI_LIST');
-            },
-            getMovieList() {
-                this.$store.dispatch('GET_MOVIE_LIST');
-            }
-        },
-        created() {
-            this.getMbtiList()
-            this.getMovieList()
         }
     }
 </script>
