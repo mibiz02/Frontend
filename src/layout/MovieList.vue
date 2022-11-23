@@ -5,7 +5,7 @@
             <h1>들이 선택한 영화</h1>
         </div>
         <flickity class="flickity_movie_list" ref="flickity" :options="flickityOptions">
-            <MovieCard v-for="movie in getList" v-bind:key="movie.title" :movie="movie"/>
+            <MovieCard v-for="(movie, index) in getList" v-bind:key="movie.title" :movie="movie" :movie_pk="index+1"/>
         </flickity>
     </div>
 </template>
@@ -38,7 +38,7 @@
                 return this.$store.state.mbti_style
             },
             getList() {
-                return this.$store.getters.GET_MOVIE_LIST
+                return this.$store.getters.getMovieList
             }
         }
     }

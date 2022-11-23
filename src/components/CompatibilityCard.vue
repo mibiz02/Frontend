@@ -9,7 +9,7 @@
                     {{item.character_MBTI_type}}
                 </div>
             </h2>
-            <p>{{item.original_movie_title}}</p>
+            <p>{{item.movie_title}}</p>
             <img :alt="item.character_name" :src="item.character_img_path"/>
         </div>
     </li>

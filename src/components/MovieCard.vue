@@ -29,7 +29,8 @@
         export default {
             name: 'MovieCard',
             props: {
-                movie: Object
+                movie: Object,
+                movie_pk:Number
             },
             computed: {
                 setMovieYear() {
@@ -46,7 +47,7 @@
                         .push({
                             name: 'movie',
                             query: {
-                                id: this.movie.id
+                                id: this.movie_pk
                             }
                         })
                 }

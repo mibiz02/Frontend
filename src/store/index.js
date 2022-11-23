@@ -49,12 +49,14 @@ export default new Vuex.Store({
         character_list: [],
         good_list: [],
         bad_list: [],
-        token: '',
-        isLogin: false,
+        token: ''
     },
     getters: {
-        GET_MOVIE_LIST(state) {
+        getMovieList(state) {
             return state.movie_list
+        },
+        isLogin(state) {
+            return state.token ? true:false;
         }
     },
     mutations: {
@@ -186,7 +188,11 @@ export default new Vuex.Store({
                     context.commit('SIGN_UP', res.data.key)
                     window.location.href = 'http://localhost:8080/login'
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    if (err.response.status) {
+                        alert('이미 존재하는 아이디나 이메일입니다.')
+                    }
+                })
             },
         LOGIN(context, payload) {
             const {username, password} = payload
@@ -197,6 +203,9 @@ export default new Vuex.Store({
                 data: {
                     username,
                     password
+                },
+                headers : {
+                    
                 }
             })
                 .then(res => {
@@ -206,7 +215,6 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
             },
-        
     },
     modules: {},
     plugins: [createPersistedState()]
