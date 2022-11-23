@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
+import { API_URL } from './api'
 import {
     intj,
     intp,
@@ -20,8 +21,6 @@ import {
     estp,
     esfp
 } from './mbtis'
-
-const API_URL = 'http://127.0.0.1:8000'
 
 Vue.use(Vuex)
 
@@ -235,38 +234,7 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
             },
-        getComments({
-            commit
-        }, payload) {
-            axios
-                .get(`${API_URL}/movies/${payload}/this_comments`)
-                .then(res => {
-                    commit('GET_COMMENTS', res.data)
-                })
-                .catch(err => console.log(err))
-            },
-        addComments({
-            commit,
-            state
-        }, payload) {
-            const {content, movie_pk} = payload
-            const token = state
-                .token
-                axios({
-                    method: 'POST',
-                    url: `${API_URL}/movies/${movie_pk}/comments`,
-                    data: {
-                        content
-                    },
-                    headers: {
-                        Authorization: `Token ${token}`
-                    }
-                })
-                .then(res => {
-                    commit('ADD_COMMENTS', res.data)
-                })
-                .catch(err => console.log(err))
-            }
+        
     },
     modules: {},
     plugins: [createPersistedState()]

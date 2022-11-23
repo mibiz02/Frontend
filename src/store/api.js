@@ -15,3 +15,5 @@ export const mbtiStyle = (mbti) => {
             background-image: linear-gradient(0deg, rgba(232,119,52,1) 0%, rgba(253,191,45,1) 100%);`
     }
 };
+
+export const API_URL = 'http://127.0.0.1:8000'
