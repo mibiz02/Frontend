@@ -66,17 +66,13 @@
                 axios
                     .get(url)
                     .then(res => {
-                        console.log(res)
                         this.bubbles = res.data
-                        console.log(this.bubbles)
                     })
                     .catch(err => console.log(err))
                 }
         },
         created() {
-            console.log("HIHIHI")
             this.getComments()
-            console.log("BYEBYEBYE")
         }
     }
 </script>

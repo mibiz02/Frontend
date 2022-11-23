@@ -2,8 +2,10 @@
     <div>
         <SignNavBar/>
         <MovieDetail :movie="this.movieData"/>
-        <!-- <iframe :src="this.movieData.video_path" frameborder="0"
-        allow="accelerometer; autoplay"/> -->
+        <div class="movie_youtube">
+            <iframe :src="this.url" frameborder="0" width="100%" height="100%"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen controls="2" loading="lazy"/>
+        </div>
         <CompatibilityList title="등장하는" :list="this.characterData"/>
         <div class="comment_body">
             <CommentBox :movie_id="String($route.query.id)" type="movies"/>
@@ -28,14 +30,15 @@
             CommentBox
         },
         data() {
-            return {movieData: {}, characterData: {}, id : this.$route.query.id}
+            return {movieData: {}, characterData: {}, id : this.$route.query.id, url: ''}
         },
         created() {
             window.scrollTo(0,0);
             axios
                 .get(`${API_URL}/movies/${this.id}`)
                 .then(res => {
-                    this.movieData = res.data
+                    this.movieData = res.data,
+                    this.url = `${this.movieData.video_path}?autoplay=1&mute=1`
                 })
                 .catch(err => console.log(err));
             axios
@@ -48,4 +51,9 @@
     }
 </script>
 
-<style></style>
+<style>
+    .movie_youtube {
+        width:80%;
+        height : 50vh;
+    }
+</style>
