@@ -1,7 +1,7 @@
 <template>
     <div>
         <SignNavBar/>
-        <MovieDetail :movie="this.movieData"/>
+        <MovieDetail :movie="this.movieData" :movie_pk="this.id"/>
         <div class="movie_youtube">
             <iframe :src="this.url" frameborder="0" width="100%" height="100%"
              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen controls="2" loading="lazy"/>

@@ -126,7 +126,7 @@
 }
 
 .movie-see:hover {
-    color: #ff6e72;
+    color: rgba(255, 0, 47, 1);
 }
 
 .movie-sub-box * {
