@@ -39,21 +39,8 @@
             SignNavBar,
             CompatibilityList,
             CommentBox
-        },methods : {
-            getCharacterList() {
-                this.$store.dispatch('GET_CHARACTER_LIST', this.mbti)
-            },
-            getGoodList() {
-                this.$store.dispatch('GET_GOOD_LIST', this.mbti)
-            },
-            getBadList() {
-                this.$store.dispatch('GET_BAD_LIST', this.mbti)
-            }
         },
         created() {
-            this.getCharacterList(),
-            this.getGoodList(),
-            this.getBadList(),
             window.scrollTo(0,0)
         }
     }
