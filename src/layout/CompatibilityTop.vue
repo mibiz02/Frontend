@@ -1,7 +1,7 @@
 <template>
     <div id="compatibility-page" class="container">
-        <img :src="imgUrl" :alt="this.mbti"/>
-        <h1 :style="style">{{this.mbti}}</h1>
+        <img :src="imgUrl" :alt="mbti"/>
+        <h1 :style="style">{{mbti}}</h1>
         <h2>{{name}}</h2>
         <p>{{explain}}</p>
     </div>
@@ -12,10 +12,8 @@
 
     export default {
         name: 'CompatibilityTop',
-        data() {
-            return {
-                mbti: this.$store.state.mbti,
-            }
+        props : {
+            mbti : String
         },
         computed: {
             style() {

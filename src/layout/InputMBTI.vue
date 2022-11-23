@@ -6,7 +6,8 @@
                     <p :style="getStyle">MBTI</p>는 무엇인가요?</h1>
             </div>
             <div class="go_link">
-                <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">MBTI 검사하러 가기</a>
+                <a
+                    href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">MBTI 검사하러 가기</a>
                 <p>총 50문항으로 20분 가량 소요됩니다</p>
             </div>
         </div>
@@ -22,8 +23,7 @@
                     :text="item.text"
                     :imgUrl="item.imgUrl"
                     :idx="page"
-                    @click.native="moveBtn(item)"
-                    />
+                    @click.native="moveBtn(item)"/>
                 <div id="mbti_name">{{mbti_lst[page].name}}</div>
             </div>
             <div @click="addPage" class="select_arrow">
@@ -31,7 +31,11 @@
             </div>
         </div>
         <div class="__to_compability">
-            <router-link to="/compatibility">나와 맞는 영화 캐릭터들 보러 가기 👉</router-link>
+            <router-link
+                :to="{
+                    name : 'compatibility',
+                    query : {mbti : this.mbti}
+                }">나와 맞는 영화 캐릭터들 보러 가기 👉</router-link>
         </div>
     </div>
 </template>
@@ -50,6 +54,7 @@
                 previous: require('../assets/previous.png'),
                 next: require('../assets/next.png'),
                 style: this.$store.state.mbti_style,
+                mbti: ''
             }
         },
         computed: {
@@ -64,7 +69,9 @@
                     tmp = 0;
                 }
                 this.page = tmp
-                this.$store.commit('CHANGE_PAGE', tmp)
+                this
+                    .$store
+                    .commit('CHANGE_PAGE', tmp)
                 this
                     .$store
                     .commit('SET_STYLE', tmp)
@@ -75,7 +82,9 @@
                     tmp = 3;
                 }
                 this.page = tmp
-                this.$store.commit('CHANGE_PAGE', tmp)
+                this
+                    .$store
+                    .commit('CHANGE_PAGE', tmp)
                 this
                     .$store
                     .commit('SET_STYLE', tmp)
@@ -84,8 +93,10 @@
                 const appearIcon = document.querySelector('.__to_compability');
                 appearIcon.style.display = 'block';
 
-                this.$store.commit('SET_MBTI', item.type)
-            },
+                this.mbti = item.type
+
+                // this.$store.commit('SET_MBTI', item.type)
+            }
         }
 
     }
