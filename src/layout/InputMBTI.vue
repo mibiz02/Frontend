@@ -89,12 +89,24 @@
                     .$store
                     .commit('SET_STYLE', tmp)
             },
+            getCharacterList() {
+                this.$store.dispatch('GET_CHARACTER_LIST', this.mbti)
+            },
+            getGoodList() {
+                this.$store.dispatch('GET_GOOD_LIST', this.mbti)
+            },
+            getBadList() {
+                this.$store.dispatch('GET_BAD_LIST', this.mbti)
+            },
             moveBtn(item) {
                 const appearIcon = document.querySelector('.__to_compability');
                 appearIcon.style.display = 'block';
 
                 this.mbti = item.type
 
+                this.getCharacterList();
+                this.getGoodList();
+                this.getBadList();
                 // this.$store.commit('SET_MBTI', item.type)
             }
         }

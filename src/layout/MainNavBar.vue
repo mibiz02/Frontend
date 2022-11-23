@@ -1,6 +1,6 @@
 <template>
     <nav id="main-nav-bar">
-        <router-link to="/">
+        <router-link to="/main">
             <div id="logo">MOVIZ</div>
         </router-link>
         <ul>
