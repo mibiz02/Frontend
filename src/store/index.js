@@ -20,7 +20,6 @@ import {
     estp,
     esfp
 } from './mbtis'
-import router from '@/router'
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -191,7 +190,14 @@ export default new Vuex.Store({
                 .catch(err => console.log(err))
             },
         SIGN_UP(context, payload) {
-            const {username, nickname, email, password1, password2, MBTI_type} = payload;
+            const {
+                username,
+                nickname,
+                email,
+                password1,
+                password2,
+                MBTI_type
+            } = payload;
 
             axios({
                 method: 'post',
@@ -207,7 +213,7 @@ export default new Vuex.Store({
             })
                 .then(res => {
                     context.commit('SIGN_UP', res.data.key)
-                    router.push()
+                    window.location.href = 'http://localhost:8080/login'
                 })
                 .catch(err => console.log(err))
             },
@@ -224,8 +230,8 @@ export default new Vuex.Store({
             })
                 .then(res => {
                     this.state.isLogin = true
-                    console.log(res)
                     context.commit('SAVE_TOKEN', res.data.key)
+                    window.location.href = 'http://localhost:8080/'
                 })
                 .catch(err => console.log(err))
             },
@@ -239,21 +245,24 @@ export default new Vuex.Store({
                 })
                 .catch(err => console.log(err))
             },
-        addComments({commit, state}, payload) {
+        addComments({
+            commit,
+            state
+        }, payload) {
             const {content, movie_pk} = payload
-            const token = state.token
+            const token = state
+                .token
                 axios({
                     method: 'POST',
                     url: `${API_URL}/movies/${movie_pk}/comments`,
                     data: {
                         content
                     },
-                    headers : {
-                        Authorization : `Token ${token}`
+                    headers: {
+                        Authorization: `Token ${token}`
                     }
                 })
                 .then(res => {
-                    console.log(res)
                     commit('ADD_COMMENTS', res.data)
                 })
                 .catch(err => console.log(err))

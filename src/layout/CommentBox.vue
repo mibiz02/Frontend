@@ -42,7 +42,6 @@ export default {
     },
     created() {
         this.getComments()
-        console.log(this.bubbles)
     }
 }
 </script>
