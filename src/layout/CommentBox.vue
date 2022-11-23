@@ -21,7 +21,9 @@
             ChatBubble
         },
         props: {
-            movie_id: String
+            movie_id: String,
+            mbti : String,
+            type : String
         },
         data() {
             return {bubbles: []}
@@ -31,9 +33,11 @@
             enterComment(e) {
                 const content = e.target.value
                 const token = this.$store.state.token;
+                const idx = (this.type === 'movies') ? `${this.type}/${this.movie_id}` : `${this.type}/${this.mbti}`
+
                 axios({
                     method: 'POST',
-                    url: `${API_URL}/movies/${this.movie_id}/comments`,
+                    url: `${API_URL}/${idx}/comments`,
                     data: {
                         content
                     },
@@ -50,7 +54,8 @@
                     .value = ''
             },
             getComments() {
-                    axios.get(`${API_URL}/movies/${this.movie_id}/this_comments`)
+                    const idx = (this.type === 'movies') ? `${this.type}/${this.movie_id}` : `${this.type}/${this.mbti}`
+                    axios.get(`${API_URL}/${idx}/this_comments`)
                     .then(res => {
                         this.bubbles = res.data
                     })

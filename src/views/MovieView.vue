@@ -6,7 +6,7 @@
         allow="accelerometer; autoplay"/> -->
         <CompatibilityList title="등장하는" :list="this.characterData"/>
         <div class="comment_body">
-            <CommentBox :movie_id="String($route.query.id)"/>
+            <CommentBox :movie_id="String($route.query.id)" type="movies"/>
         </div>
     </div>
 </template>

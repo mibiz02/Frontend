@@ -200,7 +200,7 @@ export default new Vuex.Store({
                 }
             })
                 .then(res => {
-                    this.state.isLogin = true
+                    // this.state.isLogin = true
                     context.commit('SAVE_TOKEN', res.data.key)
                     window.location.href = 'http://localhost:8080/'
                 })
