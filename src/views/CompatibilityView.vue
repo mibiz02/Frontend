@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="comment_body">
-                <CommentBox :mbti="this.mbti" type="mbti_compabilities/type" />
+                <CommentBox :mbti="this.mbti" type="mbtis" />
             </div>
     </div>
 </template>

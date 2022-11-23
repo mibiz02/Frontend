@@ -22,8 +22,8 @@
         },
         props: {
             movie_id: String,
-            mbti : String,
-            type : String
+            mbti: String,
+            type: String
         },
         data() {
             return {bubbles: []}
@@ -33,20 +33,24 @@
             enterComment(e) {
                 const content = e.target.value
                 const token = this.$store.state.token;
-                const idx = (this.type === 'movies') ? `${this.type}/${this.movie_id}` : `${this.type}/${this.mbti}`
+                const url = (this.type === 'movies')
+                    ? `${API_URL}/movies/${this.movie_id}/comment`
+                    : `${API_URL}/mbti_compabilities/type/${this.mbti}/comment`
 
-                axios({
-                    method: 'POST',
-                    url: `${API_URL}/${idx}/comments`,
-                    data: {
-                        content
-                    },
-                    headers: {
-                        Authorization: `Token ${token}`
-                    }
-                })
+                    axios({
+                        method: 'POST',
+                        url: url,
+                        data: {
+                            content
+                        },
+                        headers: {
+                            Authorization: `Token ${token}`
+                        }
+                    })
                     .then(res => {
-                        this.bubbles.push(res.data)
+                        this
+                            .bubbles
+                            .push(res.data)
                     })
                     .catch(err => console.log(err));
                 document
@@ -54,16 +58,25 @@
                     .value = ''
             },
             getComments() {
-                    const idx = (this.type === 'movies') ? `${this.type}/${this.movie_id}` : `${this.type}/${this.mbti}`
-                    axios.get(`${API_URL}/${idx}/this_comments`)
+                const url = (this.type === 'movies')
+                    ? `${API_URL}/movies/${this.movie_id}/this_comments`
+                    : `${API_URL}/mbti_compabilities/type/${this.mbti}/this_comments`;
+
+                console.log(url)
+                axios
+                    .get(url)
                     .then(res => {
+                        console.log(res)
                         this.bubbles = res.data
+                        console.log(this.bubbles)
                     })
                     .catch(err => console.log(err))
                 }
         },
         created() {
+            console.log("HIHIHI")
             this.getComments()
+            console.log("BYEBYEBYE")
         }
     }
 </script>
