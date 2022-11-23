@@ -8,7 +8,7 @@
             </div>
             <div class="__input_box">
                 <input type="text" placeholder="example@example.com" @input="getUserName"/>
-                <input type="text" placeholder="비밀번호" @input="getPassword"/>
+                <input type="password" placeholder="비밀번호" @input="getPassword"/>
             </div>
             <div id="__login_box">
                 <button class="__sign_btn" @click="logIn">완료</button>
