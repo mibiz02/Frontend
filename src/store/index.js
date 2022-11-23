@@ -87,11 +87,9 @@ export default new Vuex.Store({
         },
         SET_MOVIE_LIST(state, payload) {
             state.movie_list = payload
-            console.log(state.movie_list)
         },
         SET_MBTI_LIST(state, payload) {
             state.mbti_list = payload
-            console.log(state.mbti_list)
         },
         SET_CHARACTER_LIST(state, payload) {
             state.character_list = payload

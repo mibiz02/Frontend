@@ -1,5 +1,9 @@
+.comment_body {
+    right: 0;
+}
+
 .comment_body .__input_box input {
-    margin: 0.3em;
+    margin: 0.3em 1.5em 0.3em 0.3em;
     padding: 1em;
     font-size: 1.5em;
     border-radius: 1em;

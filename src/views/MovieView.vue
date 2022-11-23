@@ -2,9 +2,11 @@
     <div>
         <SignNavBar/>
         <MovieDetail :movie="this.movieData"/>
-        <CompatibilityList title="등장하는"/>
+        <!-- <iframe :src="this.movieData.video_path" frameborder="0"
+        allow="accelerometer; autoplay"/> -->
+        <CompatibilityList title="등장하는" :list="this.characterData"/>
         <div class="comment_body">
-            <CommentBox :movie_id="$route.query.id" />
+            <CommentBox :movie_id="String($route.query.id)"/>
         </div>
     </div>
 </template>
@@ -26,20 +28,22 @@
             CommentBox
         },
         data() {
-            return {
-                movieData : [],
-                movie : {}
-            }
+            return {movieData: {}, characterData: {}, id : this.$route.query.id}
         },
         created() {
             axios
-                .get(`${API_URL}/movies/${this.$route.query.id}`)
+                .get(`${API_URL}/movies/${this.id}`)
                 .then(res => {
                     this.movieData = res.data
-                    console.log(res.data)
+                })
+                .catch(err => console.log(err));
+            axios
+                .get(`${API_URL}/movies/${this.id}/character`)
+                .then(res => {
+                    this.characterData = res.data
                 })
                 .catch(err => console.log(err))
-        }
+            }
     }
 </script>
 

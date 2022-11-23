@@ -21,7 +21,7 @@
             ChatBubble
         },
         props: {
-            movie_id: Number
+            movie_id: String
         },
         data() {
             return {bubbles: []}

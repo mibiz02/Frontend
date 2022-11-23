@@ -3,12 +3,16 @@
         <div class="movie-img">
             <img :src="movie.poster_path" alt="" class="detail-photo"></div>
             <div class="detail-content">
-                <div class="detail-title">{{movie.title}}</div>
+                <div class="detail-title">{{movie.title}}
+
+                    <p class="movie_like" v-if="this.isLike" @click="like">🖤</p>
+                    <p class="movie_like" v-if="!this.isLike" @click="like">🧡</p>
+
+                </div>
                 <div class="detail-sub-box">
-                    <div class="detail-subtext">{{setMovieYear}}</div>
+                    <div class="detail-subtext">{{movie.release_date}}</div>
                     <div class="detail-genre">
-                        <div
-                            class="detail-subtext">{{movie.genre_name}}</div>
+                        <div class="detail-subtext">{{movie.genre_name}}</div>
                     </div>
                     <div class="detail-subtext">popularity :
                         {{movie.popularity}}</div>
@@ -16,6 +20,8 @@
                         {{movie.vote_average}}</div>
                     <div class="detail-subtext">vote count :
                         {{movie.vote_count}}</div>
+                    <div class="detail-subtext">🧡 :
+                        {{movie.movie_like_users}}</div>
                 </div>
                 <div class="detail-overview">
                     {{movie.overview}}
@@ -30,12 +36,15 @@
             props: {
                 movie: Object
             },
-            computed: {
-                setMovieYear() {
-                    return this
-                        .movie
-                        .release_date
-                        .split('-')[0]
+            data() {
+                return {
+                    isLike : true
+                }
+            },
+            computed: {},
+            methods: {
+                like() {
+                    this.isLike = !this.isLike
                 }
             }
         }

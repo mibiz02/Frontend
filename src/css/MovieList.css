@@ -46,3 +46,17 @@
     font-family: 'LeferiPoint-WhiteObliqueA';
     padding-right: 3em;
 }
+
+.detail-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.detail-title * {
+    display: inline;
+}
+
+.movie_like {
+    margin: 0;
+}

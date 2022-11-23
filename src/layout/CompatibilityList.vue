@@ -16,7 +16,7 @@ import CompatibilityCard from '../components/CompatibilityCard.vue'
 export default {
     props : {
         title : String,
-        list : Array
+        list : [Object, Array]
     },
     components : {
         CompatibilityTitle,
