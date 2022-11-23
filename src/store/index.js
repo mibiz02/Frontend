@@ -49,17 +49,12 @@ export default new Vuex.Store({
         character_list: [],
         good_list: [],
         bad_list: [],
-        movie: {},
         token: '',
         isLogin: false,
-        comments: []
     },
     getters: {
         GET_MOVIE_LIST(state) {
             return state.movie_list
-        },
-        GET_COMMENTS(state) {
-            return state.comments
         }
     },
     mutations: {
@@ -92,11 +87,9 @@ export default new Vuex.Store({
         },
         SET_MOVIE_LIST(state, payload) {
             state.movie_list = payload
-            console.log(state.movie_list)
         },
         SET_MBTI_LIST(state, payload) {
             state.mbti_list = payload
-            console.log(state.mbti_list)
         },
         SET_CHARACTER_LIST(state, payload) {
             state.character_list = payload
@@ -107,22 +100,11 @@ export default new Vuex.Store({
         SET_BAD_LIST(state, payload) {
             state.bad_list = payload
         },
-        SET_MOVIE_DATA(state, payload) {
-            state.movie = payload
-        },
         SIGN_UP(state, token) {
             state.token = token
         },
         SAVE_TOKEN(state, token) {
             state.token = token
-        },
-        GET_COMMENTS(state, payload) {
-            state.comments = payload
-        },
-        ADD_COMMENTS(state, payload) {
-            state
-                .comments
-                .push(payload.bubble)
         }
     },
     actions: {
@@ -177,16 +159,6 @@ export default new Vuex.Store({
                 .catch(err => {
                     console.log(err)
                 })
-            },
-        GET_MOVIE_DATA({
-            commit
-        }, payload) {
-            axios
-                .get(`${API_URL}/movies/${payload}`)
-                .then(res => {
-                    commit('SET_MOVIE_DATA', res.data)
-                })
-                .catch(err => console.log(err))
             },
         SIGN_UP(context, payload) {
             const {
