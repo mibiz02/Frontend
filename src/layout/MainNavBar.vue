@@ -33,8 +33,9 @@
             <router-link to="/login">Login</router-link>
             <router-link to="/register">Register</router-link>
         </div>
-        <div class="__go_mypage" v-if="isLogined">
+        <div class="__go_sign" v-if="isLogined">
             <router-link to="/mypage">MyPage</router-link>
+            <div @click="logout">Logout</div>
         </div>
     </nav>
 </template>
@@ -44,10 +45,14 @@
         name: 'mainNavBar',
         computed: {
             isLogined() {
-                return (this.$store.state.isLogin) ? true : false
+                return this.$store.getters.isLogin
             }
         },
-
+        methods: {
+            logout() {
+                this.$store.commit('SAVE_TOKEN', '')
+            }
+        }
     }
 </script>
 
