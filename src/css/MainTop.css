@@ -12,7 +12,7 @@
     margin-bottom: 0.3em;
 }
 
-.main-font h1, #compatibility-page h1 {
+.main-font h1, .my-page-top {
     font-size: 8vw;
     font-family: 'SBAggroB';
 }

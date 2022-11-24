@@ -38,7 +38,7 @@
             return {
                 mbti_list : this.$store.state.mbti_list
             }
-        }
+        },
     }
 </script>
 

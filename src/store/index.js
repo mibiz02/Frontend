@@ -49,7 +49,8 @@ export default new Vuex.Store({
         character_list: [],
         good_list: [],
         bad_list: [],
-        token: ''
+        token: '',
+        isLogin : false
     },
     getters: {
         getMovieList(state) {
@@ -186,6 +187,7 @@ export default new Vuex.Store({
             })
                 .then(res => {
                     context.commit('SIGN_UP', res.data.key)
+                    context.state.isLogin = true
                     window.location.href = 'http://localhost:8080/login'
                 })
                 .catch(err => {
@@ -203,13 +205,10 @@ export default new Vuex.Store({
                 data: {
                     username,
                     password
-                },
-                headers : {
-                    
                 }
             })
                 .then(res => {
-                    // this.state.isLogin = true
+                    this.state.isLogin = true
                     context.commit('SAVE_TOKEN', res.data.key)
                     window.location.href = 'http://localhost:8080/'
                 })
