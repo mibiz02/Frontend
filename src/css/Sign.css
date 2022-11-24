@@ -46,7 +46,10 @@ input {
 .container .__input_box {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4em;
+    justify-content: center;
+    align-items: center;
+    margin : 0 auto;
+    width: 30vw;
 }
 
 .container .__input_box * {
@@ -55,6 +58,7 @@ input {
     font-size: 1.5em;
     border-radius: 1em;
     background-color: transparent;
+    width: 100%;
     color : white;
     font-family: 'GothicA1-Light';
 }

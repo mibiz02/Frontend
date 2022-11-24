@@ -212,7 +212,12 @@ export default new Vuex.Store({
                     context.commit('SAVE_TOKEN', res.data.key)
                     window.location.href = 'http://localhost:8080/'
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    if (err.response.status === 400) {
+                        alert('아이디 또는 비밀번호를 잘못 입력하였습니다.')
+                    }else {
+                        console.log(err)
+                    }})
             },
     },
     modules: {},

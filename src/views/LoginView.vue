@@ -7,7 +7,7 @@
                 <h3>로그인</h3>
             </div>
             <div class="__input_box">
-                <input type="text" placeholder="example@example.com" @input="getUserName"/>
+                <input type="text" placeholder="id" @input="getUserName"/>
                 <input type="password" placeholder="비밀번호" @input="getPassword"/>
             </div>
             <div id="__login_box">

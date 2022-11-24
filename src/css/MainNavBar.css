@@ -102,21 +102,26 @@
     text-decoration: none;
 }
 
-.__go_sign, .__go_mypage {
+.__go_sign {
     text-align: right;
 }
 
-.__go_sign *, .__go_mypage *{
+.__go_sign *{
     padding: 0 1em;
     font-family: 'SBAggroB';
     text-decoration: none;
+    margin:0;
+}
+
+.__go_sign div {
+    display: inline;
 }
 
 .__go_sign *:first-child {
     border-right: solid 1px white;
 }
 
-.__go_sign *:hover, .__go_mypage *:hover {
+.__go_sign *:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-image: rgb(232,139,52);

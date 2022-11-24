@@ -2,9 +2,16 @@
     <div>
         <SignNavBar/>
         <MovieDetail :movie="this.movieData" :movie_pk="this.id"/>
-        <div class="movie_youtube">
-            <iframe :src="this.url" frameborder="0" width="100%" height="100%"
-             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen controls="2" loading="lazy"/>
+        <div class="movie_youtube" v-if="checkIframe">
+            <iframe
+                :src="this.url"
+                frameborder="0"
+                width="100%"
+                height="100%"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen="allowfullscreen"
+                controls="2"
+                loading="lazy"/>
         </div>
         <CompatibilityList title="등장하는" :list="this.characterData"/>
         <div class="comment_body">
@@ -30,31 +37,40 @@
             CommentBox
         },
         data() {
-            return {movieData: {}, characterData: {}, id : this.$route.query.id, url: ''}
+            return {movieData: {}, characterData: {}, id: this.$route.query.id, url: ''}
+        },
+        computed : {
+            checkIframe() {
+                return (this.url === '?autoplay=1&mute=1') ? false:true
+            }
         },
         created() {
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
             axios
                 .get(`${API_URL}/movies/${this.id}`)
                 .then(res => {
                     this.movieData = res.data,
                     this.url = `${this.movieData.video_path}?autoplay=1&mute=1`
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err)
+                });
             axios
                 .get(`${API_URL}/movies/${this.id}/character`)
                 .then(res => {
                     this.characterData = res.data
                 })
-                .catch(err => console.log(err))
-            }
+                .catch(err => {
+                    console.log(err)
+                });
+        }
     }
 </script>
 
 <style>
     .movie_youtube {
-        width:80%;
-        height : 50vh;
-        padding-top:10vh;
+        width: 80%;
+        height: 50vh;
+        padding-top: 10vh;
     }
 </style>
