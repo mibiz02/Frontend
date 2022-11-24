@@ -62,7 +62,6 @@
                     ? `${API_URL}/movies/${this.movie_id}/this_comments`
                     : `${API_URL}/mbti_compabilities/type/${this.mbti}/this_comments`;
 
-                console.log(url)
                 axios
                     .get(url)
                     .then(res => {

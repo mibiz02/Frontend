@@ -153,3 +153,10 @@
     line-height: 1.5em;
     width: 70%;
 }
+
+.movie_like {
+    font-size: 1em;
+    margin: 0;
+    line-height: 0;
+    padding:0 !important;
+}
