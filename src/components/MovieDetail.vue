@@ -3,10 +3,11 @@
         <div class="movie-img">
             <img :src="movie.poster_path" alt="" class="detail-photo"></div>
             <div class="detail-content">
-                <div class="detail-title">{{movie.title}}
+                <div class="detail-title">
 
-                    <p class="movie_like" v-if="this.isLike" @click="like">🖤{{movie.like_count}}</p>
-                    <p class="movie_like" v-if="!this.isLike" @click="like">🧡{{movie.like_count+1}}</p>
+                    <p class="movie_like" v-if="!this.isLike" @click="like">🖤</p>
+                    <p class="movie_like" v-if="this.isLike" @click="like">🧡</p>
+                    {{movie.title}}
                 </div>
                 <div class="detail-sub-box">
                     <div class="detail-subtext">{{movie.release_date}}</div>
@@ -35,28 +36,55 @@
             name: 'MovieCard',
             props: {
                 movie: Object,
-                movie_pk: Number
+                movie_pk: [Number, String]
             },
             data() {
-                return {isLike: true}
+                return {isLike: null}
             },
-            computed: {},
             methods: {
                 like() {
-                    this.isLike = !this.isLike;
                     axios({
                         method: 'POST',
                         url: `${API_URL}/movies/${this.movie_pk}/like`,
                         headers: {
                             Authorization: `Token ${this.$store.state.token}`
+                        },
+                        data: {
+                            is_liked: !this.isLike
                         }
                     })
                         .then(() => {
-                            console.log(this.movie)
+                            console.log('post')
+                            this.isLike = !this
+                                .isLike
+                                console
+                                .log(this.isLike)
                         })
-                        .catch(err => console.log(err))
+                        .catch(err => {
+                            if (err.response.status === 401) {
+                                alert('회원만 이용할 수 있는 기능입니다')
+                            }
+                        });
+                }
+            },
+            created() {
+                axios({
+                    method: 'GET',
+                    url: `${API_URL}/movies/${this.movie_pk}/is_liked`,
+                    headers: {
+                        Authorization: `Token ${this.$store.state.token}`
                     }
-            }
+                })
+                    .then((res) => {
+                        console.log('before created', res.data.is_liked)
+                        this.isLike = res
+                            .data
+                            .is_liked
+                            console
+                            .log('created', this.isLike)
+                    })
+                    .catch(err => console.log(err))
+                }
         }
     </script>
 

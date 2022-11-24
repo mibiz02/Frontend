@@ -85,10 +85,3 @@
 .mbti_card:hover .img_box , .mbti_card:hover .mbti_info p, .mbti_card:hover .mbti_info h3 {
     transition: 0.5s;
 }
-
-.movie_like {
-    font-size: 1em;
-    margin-left: 1em;
-    line-height: 0;
-    padding:0 !important;
-}

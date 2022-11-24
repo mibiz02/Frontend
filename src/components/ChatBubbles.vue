@@ -6,8 +6,8 @@
                 <p :style='getStyle' class="comments_mbti">{{content.MBTI_type}}</p>
             </div>
             <p class="comment_text">{{content.content}}</p>
-            <p class="comment_like" v-if="this.isLike" @click="like">🖤</p>
-            <p class="comment_like" v-if="!this.isLike" @click="like">🧡</p>
+            <!-- <p class="comment_like" v-if="this.isLike" @click="like">🖤</p>
+            <p class="comment_like" v-if="!this.isLike" @click="like">🧡</p> -->
         </div>
     </div>
 </template>
@@ -42,5 +42,9 @@
 .comments_mbti {
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.comment_text {
+    padding-bottom: 1em;
 }
 </style>
