@@ -203,3 +203,11 @@
     margin-block:3em;
     font-family: 'LeferiPoint-WhiteObliqueA';
 }
+
+.comment-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap : 1em;
+}

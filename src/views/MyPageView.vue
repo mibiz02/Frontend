@@ -21,7 +21,8 @@
         <div>
             <div class="my-movie">
                 <div class="my-title">당신이 🧡한 영화</div>
-                <div id="app" class="my_movie_container">
+                <div v-if="isMovieBlanked" class="noList">아직 좋아요 한 영화가 없습니다</div>
+                <div class="my_movie_container" v-if="!isMovieBlanked">
                     <MyCard
                         v-for="movie in myMovie"
                         :data-image="movie.poster_path"
@@ -36,12 +37,20 @@
         <div class="my-movie">
             <div class="my-title">당신이 ✏️한 댓글</div>
             <div v-if="isCommentBlanked" class="noList">아직 쓴 댓글이 없습니다</div>
-            <div v-if="!isCommentBlanked">{{this.myComment}}</div>
+            <div v-if="!isCommentBlanked">
+                <ul class="comment-grid">
+                    <MyCommentBubbles
+                        v-for="bubble in this.myComment"
+                        v-bind:key="bubble.id"
+                        :content="bubble"/>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import MyCommentBubbles from '../components/MovieCommentBubbles.vue'
     import SignNavBar from '../layout/SignNavBar.vue'
     import MyCard from '../components/MyCard.vue'
     import axios from 'axios'
@@ -51,7 +60,8 @@
         name: 'MyPageView',
         components: {
             SignNavBar,
-            MyCard
+            MyCard,
+            MyCommentBubbles
         },
         data() {
             return {myData: {}, myMovie: {}, myComment: {}}
@@ -59,8 +69,13 @@
         computed: {
             isCommentBlanked() {
                 return (this.myComment === [])
-                    ? false
-                    : true
+                    ? true
+                    : false
+            },
+            isMovieBlanked() {
+                return (this.myMovie.length === 0)
+                    ? true
+                    : false
             }
         },
         methods: {
@@ -89,6 +104,7 @@
                 })
                     .then(res => {
                         this.myMovie = res.data
+                        console.log(this.myMovie)
                     })
                     .catch((err) => {
                         console.log(err)
@@ -98,13 +114,12 @@
             getComment() {
                 axios({
                     method: 'GET',
-                    url: `${API_URL}/mypage/like/movies/comments`,
+                    url: `${API_URL}/mypage/movies/comments`,
                     headers: {
                         Authorization: `Token ${this.$store.state.token}`
                     }
                 })
                     .then(res => {
-                        console.log(res)
                         this.myComment = res.data
                     })
                     .catch((err) => {

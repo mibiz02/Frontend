@@ -1,9 +1,8 @@
 <template>
-    <div class="talk-bubble tri-right round right-in">
+    <div class="talk-bubble tri-right round right-in" @click="moveMovie">
         <div class="talktext">
             <div>
-                <p>{{content.nickname}}</p>
-                <p :style='getStyle' class="comments_mbti">{{content.MBTI_type}}</p>
+                <p>{{content.movie_title}}</p>
             </div>
             <p class="comment_text">{{content.content}}</p>
         </div>
@@ -11,8 +10,6 @@
 </template>
 
 <script>
-    import {mbtiStyle} from '../store/api'
-
     export default {
         name: 'ChatBubble',
         props : {
@@ -23,14 +20,16 @@
                 isLike : true
             }
         },
-        computed : {
-            getStyle() {
-                return mbtiStyle(this.content.MBTI_type.toUpperCase())
-            }
-        }, 
-        methods:{
-            like() {
-                this.isLike = !this.isLike
+        methods : {
+            moveMovie() {
+                this
+                    .$router
+                    .push({
+                        name: 'movie',
+                        query: {
+                            id: this.content.movie
+                        }
+                    })
             }
         }
     }
