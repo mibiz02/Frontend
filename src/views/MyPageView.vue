@@ -81,7 +81,7 @@
         },
         computed: {
             isMovieCommentBlanked() {
-                return (this.myMovieComment === [])
+                return (this.myMovieComment.length === 0)
                     ? true
                     : false
             },
@@ -91,7 +91,7 @@
                     : false
             },
             isMbtiCommentBlanked() {
-              return (this.myMbtiComment === [])
+              return (this.myMbtiComment.length === 0)
                     ? true
                     : false
             }
