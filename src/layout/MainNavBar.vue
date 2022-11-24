@@ -44,11 +44,10 @@
         name: 'mainNavBar',
         computed: {
             isLogined() {
-                return (this.$store.state.isLogin)
-                    ? true
-                    : false
+                return (this.$store.state.isLogin) ? true : false
             }
-        }
+        },
+
     }
 </script>
 

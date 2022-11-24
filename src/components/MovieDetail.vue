@@ -54,11 +54,7 @@
                         }
                     })
                         .then(() => {
-                            console.log('post')
-                            this.isLike = !this
-                                .isLike
-                                console
-                                .log(this.isLike)
+                            this.isLike = !this.isLike
                         })
                         .catch(err => {
                             if (err.response.status === 401) {
@@ -76,12 +72,7 @@
                     }
                 })
                     .then((res) => {
-                        console.log('before created', res.data.is_liked)
-                        this.isLike = res
-                            .data
-                            .is_liked
-                            console
-                            .log('created', this.isLike)
+                        this.isLike = res.data.is_liked
                     })
                     .catch(err => console.log(err))
                 }

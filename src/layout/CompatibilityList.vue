@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <CompatibilityTitle :title="title" />   
+    <CompatibilityTitle :title="title" v-if="isListBlanked" />   
     <div class="compatibility_list">
-        <ul class="auto-grid" role="list">
+        <ul class="auto-grid" role="list" v-if="isListBlanked">
             <compatibility-card v-for="item of list" v-bind:key="item.id" :item="item"/>
         </ul>
     </div>
@@ -22,7 +22,10 @@ export default {
         CompatibilityTitle,
         CompatibilityCard
     },
-    methods : {
+    computed : {
+        isListBlanked() {
+            return (this.list.length === 0)? false:true
+        }
     }
 }
 </script>
