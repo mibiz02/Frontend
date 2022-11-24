@@ -36,11 +36,22 @@
 
         <div class="my-movie">
             <div class="my-title">당신이 ✏️한 댓글</div>
-            <div v-if="isCommentBlanked" class="noList">아직 쓴 댓글이 없습니다</div>
-            <div v-if="!isCommentBlanked">
+            <div class="my-title">🎬</div>
+            <div v-if="isMovieCommentBlanked" class="noList">아직 쓴 댓글이 없습니다</div>
+            <div v-if="!isMovieCommentBlanked">
                 <ul class="comment-grid">
-                    <MyCommentBubbles
-                        v-for="bubble in this.myComment"
+                    <MovieCommentBubbles
+                        v-for="bubble in this.myMovieComment"
+                        v-bind:key="bubble.id"
+                        :content="bubble"/>
+                </ul>
+            </div>
+            <div class="my-title">😶</div>
+            <div v-if="isMbtiCommentBlanked" class="noList">아직 쓴 댓글이 없습니다</div>
+            <div v-if="!isMbtiCommentBlanked">
+                <ul class="comment-grid">
+                    <MbtiCommentBubbles
+                        v-for="bubble in this.myMbtiComment"
                         v-bind:key="bubble.id"
                         :content="bubble"/>
                 </ul>
@@ -50,7 +61,8 @@
 </template>
 
 <script>
-    import MyCommentBubbles from '../components/MovieCommentBubbles.vue'
+    import MovieCommentBubbles from '../components/MovieCommentBubbles.vue'
+    import MbtiCommentBubbles from '../components/MbtiCommentBubbles.vue'
     import SignNavBar from '../layout/SignNavBar.vue'
     import MyCard from '../components/MyCard.vue'
     import axios from 'axios'
@@ -61,19 +73,25 @@
         components: {
             SignNavBar,
             MyCard,
-            MyCommentBubbles
+            MovieCommentBubbles,
+            MbtiCommentBubbles
         },
         data() {
-            return {myData: {}, myMovie: {}, myComment: {}}
+            return {myData: {}, myMovie: {}, myMovieComment: {}, myMbtiComment:{}}
         },
         computed: {
-            isCommentBlanked() {
-                return (this.myComment === [])
+            isMovieCommentBlanked() {
+                return (this.myMovieComment === [])
                     ? true
                     : false
             },
             isMovieBlanked() {
                 return (this.myMovie.length === 0)
+                    ? true
+                    : false
+            },
+            isMbtiCommentBlanked() {
+              return (this.myMbtiComment === [])
                     ? true
                     : false
             }
@@ -104,14 +122,13 @@
                 })
                     .then(res => {
                         this.myMovie = res.data
-                        console.log(this.myMovie)
                     })
                     .catch((err) => {
                         console.log(err)
                     });
 
             },
-            getComment() {
+            getMovieComment() {
                 axios({
                     method: 'GET',
                     url: `${API_URL}/mypage/movies/comments`,
@@ -120,7 +137,23 @@
                     }
                 })
                     .then(res => {
-                        this.myComment = res.data
+                        this.myMovieComment = res.data
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    });
+            },
+            getMbtiComment() {
+                axios({
+                    method: 'GET',
+                    url: `${API_URL}/mypage/mbti_type/comments`,
+                    headers: {
+                        Authorization: `Token ${this.$store.state.token}`
+                    }
+                })
+                    .then(res => {
+                        this.myMbtiComment = res.data
+                        console.log(this.myMbtiComment)
                     })
                     .catch((err) => {
                         console.log(err)
@@ -128,9 +161,11 @@
             }
         },
         created() {
+            window.scrollTo(0,0);
             this.getMypage()
             this.getMovie()
-            this.getComment()
+            this.getMovieComment()
+            this.getMbtiComment()
         }
     }
 </script>

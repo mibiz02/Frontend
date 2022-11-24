@@ -2,7 +2,7 @@
     <div class="talk-bubble tri-right round right-in" @click="moveMovie">
         <div class="talktext">
             <div>
-                <p>{{content.movie_title}}</p>
+                <p :style="style" class="mbti_type">{{content.mbti_page}}</p>
             </div>
             <p class="comment_text">{{content.content}}</p>
         </div>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+    import {mbtiStyle} from '../store/api'
+
     export default {
         name: 'ChatBubble',
         props : {
@@ -18,6 +20,11 @@
         data() {
             return {
                 isLike : true
+            }
+        },
+        computed : {
+            style() {
+                return (mbtiStyle(this.content.mbti_page))
             }
         },
         methods : {
